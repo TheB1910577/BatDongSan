@@ -1,5 +1,3 @@
-
-
 <div id="main">
             <div class="maincontent">
                 <?php
