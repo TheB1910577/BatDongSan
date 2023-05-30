@@ -1,0 +1,38 @@
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  #tieude_post{
+    text-align: center;
+    margin-top: 10px;
+}
+
+#t_com{
+    color: silver;
+    text-align: center;
+}
+
+#t_pro{
+    color: gold;
+    text-align: center;
+}
+
+#t_pre{
+    color:#51e2f5;
+    text-align: center;
+}
+
+#c_com{
+    border: 2px solid silver;
+}
+
+#c_pro{
+    border: 2px solid gold;
+}
+
+#c_pre{
+    border: 2px solid #51e2f5;
+}
