@@ -29,9 +29,9 @@
       session_start();
       ob_start();
     include("adminpanel/config/config.php");
-    // include("content/header.php");
+    include("content/header.php");
     include("content/main.php");
-    // include("content/footer.php");
+    include("content/footer.php");
     ?>
     
     </div><!--end container-->

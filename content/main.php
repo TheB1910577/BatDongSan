@@ -15,7 +15,7 @@
                     include("main/dang_bai_bds.php");    
                                      
                 }else {
-                    include("main/dang_bai_bds.php");
+                    include("content/main/index.php");
                 }
                 ?>
             </div>

@@ -36,3 +36,66 @@
 #c_pre{
     border: 2px solid #51e2f5;
 }
+/* Trangchu */
+.header{
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dad5d5;
+    color: black;
+}
+.timkiem{
+    padding-top: 20px;
+    text-align: center;
+    
+   
+}
+.search{
+    border-radius: 10px;
+}
+.main{
+    padding-top: 20px;
+    padding-left: auto;
+    padding-right: auto;
+    padding-bottom: 20px
+}
+.card1{
+    color: black;
+    text-decoration: none;
+    
+}
+.card a:hover{
+    color: rgb(148, 152, 148);
+}
+
+.footer{
+    padding-top: 50px;
+}
+#tinhthanh{
+    overflow: auto;
+    max-height: 300px;
+}
+#tuychon{
+    border-radius: 10px;
+    background: #d1d0d0;
+}
+.anhdaidien{
+    vertical-align: middle;
+    width: 50px;
+    border-radius: 50%;
+}
+.tentaikhoan{
+    color: black;
+    text-decoration: none;
+}
+.nguoidung {
+    display: grid;
+    white-space: nowrap;
+    grid-gap: 10px;
+    list-style-type: none;
+    
+}
+.navbar-nav{
+    white-space: nowrap;
+}
