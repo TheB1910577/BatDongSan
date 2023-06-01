@@ -140,3 +140,7 @@
 }
 
 /* het css dang bài bất động sản */
+
+#main{
+    min-height: 500px;
+}

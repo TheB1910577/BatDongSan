@@ -1,11 +1,8 @@
 <?php 
-    ob_start(); // Bắt đầu bộ đệm đầu ra
-    
-?>
-
-<?php 
-    if(isset($_GET['dangxuat'])&& $_GET['dangxuat']==1){
+    if(isset($_GET['dangxuat'])){
         unset($_SESSION['dangnhap']);
+        header("Location:index.php");
+        echo '<script>alert("Bạn đã đăng xuất!");</script>';
     }
 ?>
 <div class="header">
@@ -20,6 +17,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="index.php">Trang chủ</a>
                         </li>
+                        <?php if(isset($_SESSION['dangnhap'])) { ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Tài khoản</a>
                             <ul class="dropdown-menu">
@@ -27,10 +25,15 @@
                                 </li>
                                 <li><a class="dropdown-item" href="#">Yêu thích</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Đăng xuất</a>
+                                
+                                    <li><a class="dropdown-item" href="index.php?dangxuat">Đăng xuất</a>
+                               
                                 </li>
                             </ul>
                         </li>
+                        <?php
+                                }
+                                ?>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?quanly=dang_bai_bds">Đăng bán</a>
                         </li>
@@ -48,7 +51,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Tên tài khoản</a>
+                    <a class="nav-link" href=""><?php echo $_SESSION['dangnhap'] ?></a>
                 </li>
               </ul> 
                 <?php } else { ?>

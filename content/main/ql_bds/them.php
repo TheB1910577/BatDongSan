@@ -1,3 +1,6 @@
+<?php
+if(isset($_SESSION['dangnhap'])){
+?>
 <div class="container">
         <h1 id="tieude_post" class="mb-3">ĐĂNG BÀI BẤT ĐỘNG SẢN</h1>
         <form action="content/main/ql_bds/xuly.php" method="POST" id="dangbds" enctype='multipart/form-data'>
@@ -183,7 +186,8 @@
 
             <div class="form-group mb-3 row">  
                 <label for="maygiat" class="col-lg-4 col-md-8 col-sm-6 col-6 offset-lg-2">MÁY GIẶT</label>
-                <input class="col-lg-1 col-md-4 col-sm-5 col-6" type="checkbox" id="maygiat" name="maygiat" value="maygiat
+                <input class="col-lg-1 col-md-4 col-sm-5 col-6" type="checkbox" id="maygiat" name="maygiat" value="maygiat">
+            </div>
 
             <div class="form-group mb-3 row">  
                 <label for="tubep" class="col-lg-4 col-md-8 col-sm-6 col-6 offset-lg-2">TỦ BẾP</label>
@@ -271,6 +275,13 @@
 
         </form> 
     </div>
+    <?php
+    }else{
+    ?>
+    <h1>Bạn phải đăng nhập để sử dụng chức năng này</h1>
+    <?php
+    }
+    ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
     

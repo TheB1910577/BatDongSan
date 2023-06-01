@@ -1,32 +1,57 @@
 <?php
-    if(isset($_POST['taikhoan'])){
-        $ten_taikhoan = $_POST['ten_taikhoan'];
+    $found_usn= false;
+    $found_mail= false;
+    if($_SERVER['REQUEST_METHOD']==='POST'){
+        $ten_tk = $_POST['ten_tk'];
         $email = $_POST['email'];
         $matkhau = md5($_POST['matkhau']);
-        $avatar = $_FILES['avatar']['name'];
-        $avatar_tmp = $_FILES['avatar']['tmp_name'];
-        $avatar = time().'_'.$avatar;
         $sdt = $_POST['sdt'];
         $cccd = $_POST['cccd'];
         $birthday = $_POST['birthday'];
-        $diachi = $_POST['diachi'];
+        $diachi = $_POST['diachi']; 
 
-        $allowTypes = array('jpg','png','jpeg','gif'); 
-
-        $sql_them = "INSERT INTO taikhoan(ten_taikhoan,email,matkhau,avatar,sdt,cccd,birthday,diachi) 
-        VALUE('".$ten_taikhoan."','".$email."','".$matkhau."','".$avatar."','".$sdt."','".$cccd."','".$birthday."','".$diachi."')";
-        mysqli_query($mysqli,$sql_them);
-        move_uploaded_file($avatar_tmp,'windows/main/uploads/'.$avatar);
-        
-        
-        if($sql_them){
-           echo '<script>alert("Bạn đã đăng ký thành công.");</script>';
-            $_SESSION['taikhoan'] = $ten_taikhoan;
-            $_SESSION['email'] = $email;
-            $_SESSION['idchu'] = mysqli_insert_id($mysqli);
-           header('Location:index.php?quanly=dangnhap');
-          
+        //Kiểm tra hợp lệ username
+        $usn_check = $pdo->prepare("SELECT * FROM tai_khoan WHERE ten_tk = :tk");
+        $usn_check->execute(['tk'=>$ten_tk]);
+        $num_usn = $usn_check->rowCount();
+        if($num_usn > 0){
+            $found_usn = true;
         }
+
+        //kiểm tra tồn tại email
+        $mail_check = $pdo->prepare("SELECT * FROM tai_khoan WHERE email = :email");
+        $mail_check -> execute(['email'=>$email]);
+        $num_mail = $mail_check->rowCount();
+        if($num_mail > 0){
+            $found_mail = true;
+        }
+
+        if($found_mail== false && $found_usn==false){
+            try{
+                $stmt = $pdo->prepare(
+                    "INSERT INTO tai_khoan(ten_tk, email, sdt, cccd, diachi, matkhau, ngaysinh) 
+                    VALUES(:ten, :mail, :sdt, :cccd, :diachi, :mk, :sn)"
+                );
+                $stmt->execute([
+                    'ten'=>$ten_tk,
+                    'mail'=>$email,
+                    'sdt'=>$sdt,
+                    'cccd'=>$cccd,
+                    'diachi'=>$diachi,
+                    'mk'=>$matkhau,
+                    'sn'=>$birthday
+                ]);
+                $_SESSION['dangky'] = 1;
+                header('Location:index.php');
+            }catch(Exception $e){
+                echo 'đã có lỗi xãy ra';
+            }
+            
+        }
+
+        
+        
+        
     }
 ?>
 
@@ -35,105 +60,64 @@
 <div id="wrapper">
     <div class="container">
         <div class="row justify-content-around">
-            <form action="" class="col-md-6 bg-light p-3 my-3">
-                <h1 class="text-center text-uppercase h3 py-3">Sign up</h1>
+            <form method="POST" class="col-md-6 bg-light p-3 my-3">
+                <h1 class="text-center text-uppercase h3 py-3">ĐĂNG KÝ</h1>
                     
                 <div class="mb-3">
                     <label for="inputUsername" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="inputUsername">
+                    <input type="text" class="form-control" id="inputUsername" name="ten_tk">
+                    <?php
+                        if($found_usn==true){
+                    ?>
+                        <label class="error">username đã có người sử dụng</label>
+                    <?php 
+                    } 
+                    ?>
                 </div> 
                     
                 <div class="mb-3">
                     <label for="inputEmail4"  class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4">
+                    <input type="email" class="form-control" id="inputEmail4" name="email">
+                    <?php
+                        if($found_mail==true){
+                    ?>
+                        <label class="error">Email đã có người sử dụng</label>
+                    <?php 
+                        }
+                    ?>
                 </div>
   
                 <div class="mb-1">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4"><br>
+                    <label for="inputPassword4" class="form-label">Mật Khẩu</label>
+                    <input type="password" class="form-control" id="inputPassword4" name="matkhau"><br>
                 </div>    
 
-                <div class="input-group mb-4">
+                <!-- <div class="mb-4">
+                    <label for="inputGroupFile04" class="form-lable">Ảnh đại diện nếu có</label>
                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
-                </div>    
+                </div>     -->
 
                 <div class="mb-3">
-                    <label for="inputPhoneNumber" class="form-label">Phone number</label>
-                    <input type="number" class="form-control" id="inputPhoneNumber">
+                    <label for="inputPhoneNumber" class="form-label">Điện thoại</label>
+                    <input type="text" class="form-control" id="inputPhoneNumber" name="sdt">
                 </div>    
 
                 <div class="mb-4">
-                    <label for="inputCI" class="form-label">Citizen Identification</label>
-                    <input type="text" class="form-control" id="inputCI">
+                    <label for="inputCI" class="form-label">CMND/CCCD</label>
+                    <input type="text" class="form-control" id="inputCI" name="cccd">
                 </div>    
 
-                <div class="row mb-3">
-                    <label for="chooseBirthDay" class="form-label">Choose your birthday</label>
-                        <div class="col">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Day</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                                <option value="27">27</option>
-                                <option value="28">28</option>
-                                <option value="29">29</option>
-                                <option value="30">30</option>
-                                <option value="31">31</option>    
-                            </select>
-                        </div>
-                        <div class="col">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Month</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="inputYear" placeholder="Year of birthday">
-                        </div>
-                    </div>    
+                <div class="mb-4">
+                    <label for="inputbirtday" class="form-label">Ngày sinh</label>
+                    <input type="date" class="form-control" id="inputbirtday" name="birthday">
+                </div>
 
                 <div class="mb-4">
-                    <label for="inputAddress" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Apartment, studio, or floor">
+                    <label for="inputAddress" class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Số nhà, Tên đường, xã/Phường/Thị trấn, Quận/Huyện/Thành Phố" name="diachi">
                 </div>
                 <div class="mb-4">
-                    <button type="submit" class="btn btn-primary">Sign up</button>
+                    <button type="submit" class="btn btn-primary">Đăng Ký</button>
                 </div>
             </form>  
         </div>

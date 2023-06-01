@@ -1,23 +1,20 @@
 <?php
-    if(isset($_POST['dangnhap'])){
-        $email = $_POST['email'];
-        $matkhau = md5($_POST['matkhau']);
-        $sql = "SELECT * FROM taikhoan WHERE email='".$email."' AND matkhau='".$matkhau."' LIMIT 1";
-        $row = mysqli_query($mysqli,$sql);
-        $count = mysqli_num_rows($row);
-       
-        if($count>0){
-            $row_data = mysqli_fetch_array($row);
-            $_SESSION['dangky'] = $row_data['ten_taikhoan'];
-            $_SESSION['email'] = $row_data['email'];
-            
-             $_SESSION['idchu'] = $row_data['id_taikhoan'];
-             header('Location:index.php');
-            
-        }else{
-            echo '<script>alert("Tài khoản hoặc mật khẩu không đúng, vui lòng nhập lại.");</script>';
-
-        }
+    
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+      $stmt = $pdo->prepare("SELECT * FROM tai_khoan WHERE email = :mail AND matkhau = :pass");
+      $stmt->execute([
+        'mail' => $_POST['email'],
+        'pass' => md5($_POST['pass'])
+      ]);
+      $count = $stmt->rowCount();
+      $row = $stmt->fetch();
+      if($count == 1){
+        $_SESSION['dangnhap'] = $row['ten_tk'];
+        //echo $_SESSION['dangnhap'];
+        header("location: index.php");
+      }else{
+        echo '<script>alert("Tài khoản hoặc Mật khẩu không đúng,vui lòng nhập lại.");</script>';
+      }
     }
 ?>
 
@@ -26,22 +23,22 @@
 <div id="wrapper">
     <div class="container">
         <div class="row justify-content-around">
-            <form action="" class="col-md-6 bg-light p-3 my-3">
+            <form class="col-md-6 bg-light p-3 my-3" method="post">
                 <h1 class="text-center text-uppercase h3 py-3">Sign up</h1>                    
                     <div class="mb-3">
                       <label for="inputEmail4"  class="form-label">Email</label>
-                      <input type="email" class="form-control" id="inputEmail4">
+                      <input type="email" class="form-control" id="inputEmail4" name="email">
                     </div>
   
                     <div class="mb-1">
                       <label for="inputPassword4" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="inputPassword4"><br>
+                      <input type="password" class="form-control" id="inputPassword4" name="pass"><br>
                     </div>
 
                     <div class="mb-4">
                       <button type="submit" class="btn btn-primary">Log in</button>
                     </div>
-                  </form>
+              </form>
         </div>
     </div>
 </div>

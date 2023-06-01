@@ -7,18 +7,17 @@
                     $tam = "";
                 }
                 if($tam == 'chi_tiet_bds'){
-                    include("main/chi_tiet_bds.php");
+                    include("content/main/chi_tiet_bds.php");
 
                 }elseif($tam == 'dang_bai_bds'){
-                    include("main/ql_bds/them.php");    
+                    include("content/main/ql_bds/them.php");    
 
                 }elseif($tam == 'dang_ky'){
-                    include("main/dang_ky.php");  
+                    include("content/main/dang_ky.php");  
                     
                 }elseif($tam == 'dang_nhap'){
-                    include("main/dang_nhap");
+                    include("content/main/dang_nhap.php");
             
-                    
                 }
                 else {
                     include("content/main/index.php");
