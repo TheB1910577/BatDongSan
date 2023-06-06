@@ -2,6 +2,12 @@
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(isset($_POST['suathongtin'])){
             if(!empty($_FILES['avt']['name'])){
+                //del old imgs
+                $del = $pdo->prepare("SELECT * FROM taikhoan WHERE id_taikhoan = :id");
+                $del->execute(['id'=>$_SESSION['id_taikhoan']]);
+                $process = $del->fetch();
+                unlink('uploads/'.$process['avata']);
+
                 $atv = time().$_FILES['avt']['name'];
                 $avt_tmp = $_FILES['avt']['tmp_name'];
                 $hoten = $_POST['hoten'];
@@ -9,46 +15,52 @@
                 $cccd = $_POST['cccd'];
                 $ngaysinh =$_POST['ngaysinh'];
                 $diachi = $_POST['diachi'];
+
+
+                $file_extension = pathinfo($atv, PATHINFO_EXTENSION);
+                $file_extension = strtolower($file_extension);
+                $valid_extension = array("png","jpeg","jpg");
+                if(in_array($file_extension, $valid_extension)){
+                    move_uploaded_file($avt_tmp,'uploads/'.$atv);
+                    $stmt = $pdo->prepare(
+                        "UPDATE taikhoan SET ten_taikhoan = :ten, avata = :avt ,sdt = :dt, cccd = :cccd, birthday = :sn, diachi=:dc
+                        WHERE id_taikhoan = :id"
+                    );
+                    $stmt->execute([
+                        'ten'=>$hoten,
+                        'avt'=>$atv,
+                        'dt'=>$sdt,
+                        'cccd'=>$cccd,
+                        'sn'=>$ngaysinh,
+                        'dc'=>$diachi,
+                        'id'=>$_SESSION['id_taikhoan']
+                    ]);
+                    echo '<script>alert("ĐÃ CẬP NHẬT");</script>'; 
+                    header("Refresh: 0; url=index.php?quanly=qltk");
+                }else echo '<script>alert("Đã có lỗi xảy ra");</script>'; 
                 
-                move_uploaded_file($avt_tmp,'uploads/'.$atv);
+                
+            }else{
+                $hoten = $_POST['hoten'];
+                $sdt = $_POST['sdt'];
+                $cccd = $_POST['cccd'];
+                $ngaysinh =$_POST['ngaysinh'];
+                $diachi = $_POST['diachi'];
+                
                 $stmt = $pdo->prepare(
-                    "UPDATE taikhoan SET ten_taikhoan = :ten, avata = :avt ,sdt = :dt, cccd = :cccd, birthday = :sn, diachi=:dc
+                    "UPDATE taikhoan SET ten_taikhoan = :ten, sdt = :dt, cccd = :cccd, birthday = :sn, diachi=:dc
                     WHERE id_taikhoan = :id"
                 );
                 $stmt->execute([
                     'ten'=>$hoten,
-                    'avt'=>$atv,
                     'dt'=>$sdt,
                     'cccd'=>$cccd,
                     'sn'=>$ngaysinh,
                     'dc'=>$diachi,
                     'id'=>$_SESSION['id_taikhoan']
                 ]);
-                
                 echo '<script>alert("ĐÃ CẬP NHẬT");</script>'; 
                 header("Refresh: 0; url=index.php?quanly=qltk");
-            }else{
-                echo 'khong co anh';
-            //     $hoten = $_POST['hoten'];
-            //     $sdt = $_POST['sdt'];
-            //     $cccd = $_POST['cccd'];
-            //     $ngaysinh =$_POST['ngaysinh'];
-            //     $diachi = $_POST['diachi'];
-                
-            //     $stmt = $pdo->prepare(
-            //         "UPDATE taikhoan SET ten_taikhoan = :ten, sdt = :dt, cccd = :cccd, birthday = :sn, diachi=:dc
-            //         WHERE id_taikhoan = :id"
-            //     );
-            //     $stmt->execute([
-            //         'ten'=>$hoten,
-            //         'dt'=>$sdt,
-            //         'cccd'=>$cccd,
-            //         'sn'=>$ngaysinh,
-            //         'dc'=>$diachi,
-            //         'id'=>$_SESSION['id_taikhoan']
-            //     ]);
-            //     echo '<script>alert("ĐÃ CẬP NHẬT");</script>'; 
-            //     header("Refresh: 0; url=index.php?quanly=qltk");
             }
         }
         if(isset($_POST['doimk'])){
