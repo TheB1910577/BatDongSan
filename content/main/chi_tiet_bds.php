@@ -208,17 +208,32 @@
         <!--end row lv1-->
     </div>
 
-<script>
+    <script>
     // Lấy thẻ biểu tượng
     var icon = document.getElementById("myIcon");
 
+    // Khởi tạo biến đếm và trạng thái ban đầu
+    var count = 0;
+    var isLiked = false;
+
     // Gán sự kiện nhấp chuột
     icon.addEventListener("click", function() {
-        // Thay đổi lớp (class) hoặc nội dung của biểu tượng
-        icon.className = 'fa fa-heart'; // Thay đổi lớp
-        // icon.innerHTML = "new_icon"; // Thay đổi nội dung
+        // Kiểm tra trạng thái hiện tại của biểu tượng
+        if (isLiked) {
+            // Nếu đã chọn rồi, bỏ chọn
+            icon.className = 'fa fa-heart-o';
+            isLiked = false;
+            count--;
+        } else {
+            // Nếu chưa chọn, thực hiện chọn
+            icon.className = 'fa fa-heart';
+            isLiked = true;
+            count++;
+        }
 
         // Các đoạn mã khác để thực hiện hành động khác (nếu cần)
+        // Ví dụ: cập nhật số lượng đã chọn
+        console.log("Số lượng đã chọn: " + count);
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

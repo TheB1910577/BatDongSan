@@ -31,7 +31,13 @@
     $sql->execute(['id'=>$_SESSION['id_taikhoan']]);
 ?>
 <div class="container">
-    <h3>Tài Khoản của tôi</h3>
+    <h3 style="text-align: center; padding-top: 15px;">Tài Khoản của tôi</h3>
+    <div style="text-align: center;">
+       
+                    <img class="avatar1" src="<?php if($row['avata']!=0) echo $row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
+                    
+        
+    </div>
     <form action="" method="post">
         <div class="form-group mb-3 mt-3 row">
             <label for="hoten" class="col-lg-2 col-md-2 col-sm-3 col-12 col offset-lg-1">Họ và tên:</label>

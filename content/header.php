@@ -57,7 +57,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=""><?php echo $row['ten_taikhoan'] ?></a>
+                    <a class="nav-link" href="index.php?quanly=qltk"><?php echo $row['ten_taikhoan'] ?></a>
                 </li>
               </ul> 
                 <?php } else { ?>

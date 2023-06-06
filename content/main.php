@@ -29,6 +29,7 @@
                 elseif($tam == 'doimatkhau'){
                     include("content/main/ql_tk/doimatkhau.php");
                 }
+                
                 else {
                     include("content/main/index.php");
                 }
