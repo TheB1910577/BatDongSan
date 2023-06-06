@@ -4,6 +4,12 @@
     height: 50px;
     border-radius: 50%;
   }
+  .avatar1{
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    }
 
   #tieude_post{
     text-align: center;

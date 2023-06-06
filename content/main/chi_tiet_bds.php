@@ -182,7 +182,7 @@
                 <div class="row"><h3>Người đăng bán</h3></div>
                 <div class="row">
                     <div class="col">
-                        <img src="<?php if($row['avata']!='') echo $row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="Avatar" class="avatar">
+                        <img src="<?php if($row['avata']!='') echo 'uploads/'.$row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="Avatar" class="avatar">
                     </div>
                     <div class="col">
                        <h4><?php echo $row['ten_taikhoan'] ?></h4>

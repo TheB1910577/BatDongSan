@@ -52,7 +52,7 @@
               <ul class="nguoidung navbar-nav">
                 <li class="nav-item">
                   <a href="">
-                    <img class="avatar" src="<?php if($row['avata']!=0) echo $row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
+                    <img class="avatar" src="<?php if($row['avata']!=0) echo 'uploads/'.$row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
                     
                   </a>
                 </li>
