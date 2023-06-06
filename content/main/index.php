@@ -101,24 +101,46 @@
     </div>
 </div>
 
+<?php
+  //echo $_SESSION['dangnhap'];
+  $stmt = $pdo->prepare(
+    "SELECT * FROM tin_dang ORDER BY loai_tin_dang DESC"
+  );
+  $stmt->execute();
+?>
 <div class="container">
   <div class="row row-cols-1 row-cols-md-3 g-4">
+    <?php
+      while($rows = $stmt->fetch()){
+        $adr = $pdo->prepare(
+          "SELECT * FROM bat_dong_san as a, hinhanh as b 
+          WHERE a.ma_bds = b.ma_bds
+          AND a.ma_bds = :ma LIMIT 1"
+        );
+        $adr->execute(['ma'=>$rows['ma_bds']]);
+        $bds=$adr->fetch();
+        
+    ?>
+  
     <div class="col">
       <div class="card h-100">
-        <a class="card1" href="index.php?quanly=chi_tiet_bds">
-          <img src="https://nhaxinhcenter.com.vn/source/pic/tin-tuc/thiet-ke-nha-dep-3-tang/thiet-ke-nha-dep-3-tang-32.jpg" class="card-img-top" alt="...">
+        <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $rows['ma_bds']; ?>">
+          <img src="<?php echo $bds['link_anh'] ?>" class="card-img-top" alt="...">
           <div class="card-body">
-            <h4 class="card-title">Tên nhà</h4>
-            <h6>Giá tiền:</h6>
-            <h6>Địa chỉ</h6>
+            <h4 class="card-title"><?php echo $rows['tieu_de'] ?></h4>
+            <h6>Giá tiền: <?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h6>
+            <h6>Địa chỉ: <?php echo $bds['diachi'] ?></h6>
             <h6>Thông tin:</h6>
             <p class="card-text">
-              Nhà đẹp nhất thế giới. Không đẹp không lấy tiền
+              <?php $rows['mo_ta']?>
             </p>
           </div>
         </a>
       </div>
     </div>
+    <?php
+      }
+    ?>
   </div>
 </div>
     

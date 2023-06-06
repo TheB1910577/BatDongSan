@@ -19,6 +19,16 @@
                     include("content/main/dang_nhap.php");
             
                 }
+                elseif($tam == 'tindang'){
+                    include("content/main/tindangcuatoi.php");
+                }
+                elseif($tam == 'qltk'){
+                    include("content/main/ql_tk/taikhoan.php");
+                }
+
+                elseif($tam == 'doimatkhau'){
+                    include("content/main/ql_tk/doimatkhau.php");
+                }
                 else {
                     include("content/main/index.php");
                 }

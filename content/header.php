@@ -9,31 +9,29 @@
         <nav class="navbar navbar-expand-sm navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">Logo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdown">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                  <div class="collapse navbar-collapse" id="navbarDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="index.php">Trang chủ</a>
                         </li>
                         <?php if(isset($_SESSION['dangnhap'])) { ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Tài khoản</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Bất động sản của tôi</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#">Yêu thích</a>
-                                </li>
-                                
-                                    <li><a class="dropdown-item" href="index.php?dangxuat">Đăng xuất</a>
-                               
-                                </li>
-                            </ul>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tài khoản</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="index.php?quanly=tindang&id=<?php echo $_SESSION['id_taikhoan'] ?>">Bài đăng của tôi</a>
+                                <a class="dropdown-item" href="index.php?quanly=qltk">Quản lý tài khoản</a>
+                                <a class="dropdown-item" href="#">Yêu thích</a>
+                                <a class="dropdown-item" href="index.php?dangxuat">Đăng xuất</a>
+                            </div>
                         </li>
+                        
                         <?php
-                                }
-                                ?>
+                            }
+                        ?>
+                    
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?quanly=dang_bai_bds">Đăng bán</a>
                         </li>
@@ -42,16 +40,24 @@
                                       
                 </div>
             </div>
-            <?php if(isset($_SESSION['dangnhap'])) { ?>
+            <?php 
+                if(isset($_SESSION['dangnhap'])) { 
+                    $profile = $pdo->prepare(
+                        "SELECT * FROM taikhoan WHERE email = :mail"
+                    );
+                    $profile->execute(['mail'=>$_SESSION['dangnhap']]);
+                    $row = $profile->fetch();
+            ?>
             <div>
               <ul class="nguoidung navbar-nav">
                 <li class="nav-item">
                   <a href="">
-                    <img class="anhdaidien" src="https://i.pinimg.com/564x/76/80/76/7680768d2115009e96ad70bd57146e74.jpg" alt="">
+                    <img class="avatar" src="<?php if($row['avata']!=0) echo $row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
+                    
                   </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=""><?php echo $_SESSION['dangnhap'] ?></a>
+                    <a class="nav-link" href=""><?php echo $row['ten_taikhoan'] ?></a>
                 </li>
               </ul> 
                 <?php } else { ?>

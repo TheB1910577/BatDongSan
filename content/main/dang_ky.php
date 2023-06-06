@@ -10,26 +10,18 @@
         $birthday = $_POST['birthday'];
         $diachi = $_POST['diachi']; 
 
-        //Kiểm tra hợp lệ username
-        $usn_check = $pdo->prepare("SELECT * FROM tai_khoan WHERE ten_tk = :tk");
-        $usn_check->execute(['tk'=>$ten_tk]);
-        $num_usn = $usn_check->rowCount();
-        if($num_usn > 0){
-            $found_usn = true;
-        }
-
         //kiểm tra tồn tại email
-        $mail_check = $pdo->prepare("SELECT * FROM tai_khoan WHERE email = :email");
+        $mail_check = $pdo->prepare("SELECT * FROM taikhoan WHERE email = :email");
         $mail_check -> execute(['email'=>$email]);
         $num_mail = $mail_check->rowCount();
         if($num_mail > 0){
             $found_mail = true;
         }
 
-        if($found_mail== false && $found_usn==false){
+        if($found_mail== false && $found_usn==false){ 
             try{
                 $stmt = $pdo->prepare(
-                    "INSERT INTO tai_khoan(ten_tk, email, sdt, cccd, diachi, matkhau, ngaysinh) 
+                    "INSERT INTO taikhoan(ten_taikhoan, email, sdt, cccd, diachi, matkhau, birthday) 
                     VALUES(:ten, :mail, :sdt, :cccd, :diachi, :mk, :sn)"
                 );
                 $stmt->execute([
@@ -64,7 +56,7 @@
                 <h1 class="text-center text-uppercase h3 py-3">ĐĂNG KÝ</h1>
                     
                 <div class="mb-3">
-                    <label for="inputUsername" class="form-label">Username</label>
+                    <label for="inputUsername" class="form-label">Họ và tên: </label>
                     <input type="text" class="form-control" id="inputUsername" name="ten_tk">
                     <?php
                         if($found_usn==true){

@@ -1,7 +1,7 @@
 <?php
     
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      $stmt = $pdo->prepare("SELECT * FROM tai_khoan WHERE email = :mail AND matkhau = :pass");
+      $stmt = $pdo->prepare("SELECT * FROM taikhoan WHERE email = :mail AND matkhau = :pass");
       $stmt->execute([
         'mail' => $_POST['email'],
         'pass' => md5($_POST['pass'])
@@ -9,7 +9,9 @@
       $count = $stmt->rowCount();
       $row = $stmt->fetch();
       if($count == 1){
-        $_SESSION['dangnhap'] = $row['ten_tk'];
+        
+        $_SESSION['dangnhap'] = $row['email'];
+        $_SESSION['id_taikhoan'] = $row['id_taikhoan'];
         //echo $_SESSION['dangnhap'];
         header("location: index.php");
       }else{
