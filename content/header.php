@@ -27,14 +27,15 @@
                                 <a class="dropdown-item" href="index.php?dangxuat">Đăng xuất</a>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?quanly=batdongsancuatoi">Bất động sản của tôi</a>
+                        </li>
                         
                         <?php
                             }
                         ?>
                     
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?quanly=dang_bai_bds">Đăng bán</a>
-                        </li>
+                        
                       
                     </ul>  
                                       

@@ -9,10 +9,22 @@
                 if($tam == 'chi_tiet_bds'){
                     include("content/main/chi_tiet_bds.php");
 
-                }elseif($tam == 'dang_bai_bds'){
+                }elseif($tam == 'batdongsancuatoi'){
+                    include("content/main/ql_bds/tongquan.php");    
+
+                }elseif($tam == 'them_bds'){
                     include("content/main/ql_bds/them.php");    
 
-                }elseif($tam == 'dang_ky'){
+                }
+                elseif($tam == 'xoa'){
+                    include("content/main/ql_bds/xuly.php");    
+
+                }
+                elseif($tam == 'sua_bds'){
+                    include("content/main/ql_bds/sua.php");    
+
+                }
+                elseif($tam == 'dang_ky'){
                     include("content/main/dang_ky.php");  
                     
                 }elseif($tam == 'dang_nhap'){
