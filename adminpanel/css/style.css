@@ -1,0 +1,271 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #1f1d36;
+}
+
+.nav-menu:before,
+.nav-menu:after{
+    content: "";
+    display: table;
+}
+
+.nav-menu:after{
+    clear: both;
+}
+
+.nav-menu{
+    *zoom: 1;
+}
+
+.menu,
+.submenu{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu{
+    margin: 50px auto;
+    width: 800px;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+}
+
+.menu > li{
+    background-color: black;
+    float: left;
+    position: relative;
+    transform: skewX(25deg);
+}
+
+.menu a{
+    display: block;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+}
+
+.menu li:hover{
+    background-color:#e74c3c;
+}
+
+.menu > li > a{
+    transform: skewX(-25deg);
+    padding: 1em 2em;
+}
+
+/* dropdow */
+.menu-item{
+    position: absolute;
+    width: 200px;
+    left: 50px;
+    margin-left: -100px;
+    transform: skewX(-25deg);
+    transform-origin: left top;
+}
+
+.menu-item li{
+    background: #5c5959;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-item > li > a{
+    padding: 1em 2em;
+}
+
+.menu-item > li::after{
+    content: '';
+    position: absolute;
+    top: -125%;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .9);
+}
+.menu-item > li:nth-child(odd){
+    transform: skewX(-25deg) translateX(0);
+}
+.menu-item > li:nth-child(odd) > a{
+    transform: skewX(25deg);
+}
+.menu-item > li:nth-child(odd)::after{
+    right: -50%;
+    transform: skewX(-25deg) rotate(3deg);
+}
+.menu-item > li:nth-child(even){
+    transform: skewX(25deg) translateX(0);
+}
+.menu-item > li:nth-child(even) > a{
+    transform: skewX(-25deg);
+}
+.menu-item > li:nth-child(even)::after{
+    left: -50%;
+    transform: skewX(-25deg) rotate(3deg);
+}
+/* showdropdow */
+.menu-item,
+.menu-item li{
+    opacity: 0;
+    visibility: hidden;
+}
+.menu-item li{
+    transition: .2s ease transform;
+}
+.menu > li:hover .menu-item,
+.menu > li:hover .menu-item li{
+    opacity: 1;
+    visibility: visible;
+}
+.menu > li:hover .menu-item li:nth-child(even){
+    transform: skewX(25deg) translateX(15px);
+}
+.menu > li:hover .menu-item li:nth-child(odd){
+    transform: skewX(-25deg) translateX(-15px);
+}
+/* table */
+.bang{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.anh{
+    object-fit: fill;
+}
+.anh1{
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .anh1:hover {opacity: 0.7;}
+/* #img2{
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #img2:hover {opacity: 0.7;}
+#img3{
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #img3:hover {opacity: 0.7;} */
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* Caption of Modal Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation */
+  .modal-content, #caption {  
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform: scale(0.1)} 
+    to {transform: scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+  }
+
+  /* chitiettindang */
+  .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  #tieude_post{
+    text-align: center;
+    margin-top: 10px;
+}
+
+#t_com{
+    color: silver;
+    text-align: center;
+}
+
+#t_pro{
+    color: gold;
+    text-align: center;
+}
+
+#t_pre{
+    color:#51e2f5;
+    text-align: center;
+}
+
+#c_com{
+    border: 2px solid silver;
+}
+
+#c_pro{
+    border: 2px solid gold;
+}
+
+#c_pre{
+    border: 2px solid #51e2f5;
+}
