@@ -9,10 +9,26 @@
                 if($tam == 'chi_tiet_bds'){
                     include("content/main/chi_tiet_bds.php");
 
-                }elseif($tam == 'dang_bai_bds'){
+                }elseif($tam == 'batdongsancuatoi'){
+                    include("content/main/ql_bds/tongquan.php");    
+
+                }elseif($tam == 'them_bds'){
                     include("content/main/ql_bds/them.php");    
 
-                }elseif($tam == 'dang_ky'){
+                }
+                elseif($tam == 'xoa'){
+                    include("content/main/ql_bds/xuly.php");    
+
+                }
+                elseif($tam == 'sua_bds'){
+                    include("content/main/ql_bds/sua.php");    
+
+                }
+                elseif($tam == 'dangtin'){
+                    include("content/main/ql_bds/dangtin.php");    
+
+                }
+                elseif($tam == 'dang_ky'){
                     include("content/main/dang_ky.php");  
                     
                 }elseif($tam == 'dang_nhap'){
@@ -29,7 +45,13 @@
                 elseif($tam == 'doimatkhau'){
                     include("content/main/ql_tk/doimatkhau.php");
                 }
-                
+                elseif($tam == 'camon'){
+                    include("content/main/camon.php");
+                }
+                elseif($tam == 'timkiem'){
+                    include("content/main/tim_kiem.php");
+                }
+
                 else {
                     include("content/main/index.php");
                 }

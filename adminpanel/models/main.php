@@ -15,6 +15,9 @@
                 else if($tam == 'chitiettindang'){
                     include("models/quanlytindang/chitiettindang.php");
                 }
+                else if($tam == 'chitiettindangcuanguoidung'){
+                    include("models/quanlytindang/chitiettindangcuanguoidung.php");
+                }
                 else if($tam == 'thongke'){
                     include("models/quanlytindang/thongke.php");
                 }

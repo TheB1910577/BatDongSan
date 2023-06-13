@@ -17,13 +17,7 @@ body{
     clear: both;
 }
 
-.nav-menu{
-    *zoom: 1;
-}
 
-nav{
-    padding: 50px;
-}
 
 .menu,
 .submenu{
@@ -141,14 +135,14 @@ nav{
 .anh{
     object-fit: fill;
 }
-#img1{
+.anh1{
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
   }
   
-  #img1:hover {opacity: 0.7;}
-#img2{
+  .anh1:hover {opacity: 0.7;}
+/* #img2{
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
@@ -161,7 +155,7 @@ nav{
     transition: 0.3s;
   }
   
-  #img3:hover {opacity: 0.7;}
+  #img3:hover {opacity: 0.7;} */
   
   /* The Modal (background) */
   .modal {

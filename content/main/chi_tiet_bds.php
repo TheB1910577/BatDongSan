@@ -13,7 +13,7 @@
             <div class="col-lg-8 col-md-9 col-sm-12">
                 <?php
                     $pic = $pdo->prepare(
-                        "SELECT * FROM hinhanh WHERE ma_bds = 7"
+                        "SELECT * FROM hinhanh WHERE ma_bds = '".$_GET['ma_bds']."'"
                     );
                     $pic->execute();
                     $count = $pic->rowCount();
@@ -45,7 +45,7 @@
                             ?>
                             
                             <div class="carousel-item <?php if($n == 0) echo 'active'; ?>">
-                                <img src="<?php echo $img['link_anh'] ?>" class="d-block w-100" alt="...">
+                                <img src="uploads/bds/<?php echo $img['link_anh'] ?>" class="d-block w-100" alt="...">
                             </div>
 
                             <?php
@@ -182,7 +182,7 @@
                 <div class="row"><h3>Người đăng bán</h3></div>
                 <div class="row">
                     <div class="col">
-                        <img src="<?php if($row['avata']!='') echo $row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="Avatar" class="avatar">
+                        <img src="<?php if($row['avata']!='') echo 'uploads/'.$row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="Avatar" class="avatar">
                     </div>
                     <div class="col">
                        <h4><?php echo $row['ten_taikhoan'] ?></h4>
@@ -208,32 +208,17 @@
         <!--end row lv1-->
     </div>
 
-    <script>
+<script>
     // Lấy thẻ biểu tượng
     var icon = document.getElementById("myIcon");
 
-    // Khởi tạo biến đếm và trạng thái ban đầu
-    var count = 0;
-    var isLiked = false;
-
     // Gán sự kiện nhấp chuột
     icon.addEventListener("click", function() {
-        // Kiểm tra trạng thái hiện tại của biểu tượng
-        if (isLiked) {
-            // Nếu đã chọn rồi, bỏ chọn
-            icon.className = 'fa fa-heart-o';
-            isLiked = false;
-            count--;
-        } else {
-            // Nếu chưa chọn, thực hiện chọn
-            icon.className = 'fa fa-heart';
-            isLiked = true;
-            count++;
-        }
+        // Thay đổi lớp (class) hoặc nội dung của biểu tượng
+        icon.className = 'fa fa-heart'; // Thay đổi lớp
+        // icon.innerHTML = "new_icon"; // Thay đổi nội dung
 
         // Các đoạn mã khác để thực hiện hành động khác (nếu cần)
-        // Ví dụ: cập nhật số lượng đã chọn
-        console.log("Số lượng đã chọn: " + count);
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
