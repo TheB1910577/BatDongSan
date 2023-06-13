@@ -127,9 +127,12 @@
                 'id_tinh' => $id_tinh,
                 'ma' => $_GET['id']
             ]);
+            header("location:../../../index.php?quanly=batdongsancuatoi");
         }  
     }
     if(isset($_GET['xoa'])){
+        $rm = $pdo->prepare("UPDATE tin_dang SET trangthai = 0 WHERE ma_bds = '".$_GET['id']."'");
+        $rm->execute();
         $del = $pdo->prepare("UPDATE bat_dong_san SET hien_thi = 0 WHERE ma_bds = '".$_GET['id']."'");
         $del->execute();
         header("location:../../../index.php?quanly=batdongsancuatoi");

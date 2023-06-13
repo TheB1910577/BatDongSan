@@ -29,7 +29,7 @@
             <label class="col-lg-2 col-md-3 col-sm-12 col-12 offset-lg-2 mb-3" for="">CHỌN GÓI ĐĂNG: </label>
             <div class="col-lg-5 col-md-8 col-sm-12 col-12">
                 <select name="loai_tin_dang" id="" class="form-select">
-                    <option value="1" selected>GÓi ĐĂNG BẠC</option>
+                    <option value="1" selected>GÓI ĐĂNG BẠC</option>
                     <option value="2">GÓI ĐĂNG VÀNG</option>
                     <option value="3">GÓI ĐĂNG BẠCH KIM</option>
                 </select>

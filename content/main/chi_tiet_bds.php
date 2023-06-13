@@ -13,7 +13,7 @@
             <div class="col-lg-8 col-md-9 col-sm-12">
                 <?php
                     $pic = $pdo->prepare(
-                        "SELECT * FROM hinhanh WHERE ma_bds = 7"
+                        "SELECT * FROM hinhanh WHERE ma_bds = '".$_GET['ma_bds']."'"
                     );
                     $pic->execute();
                     $count = $pic->rowCount();
@@ -45,7 +45,7 @@
                             ?>
                             
                             <div class="carousel-item <?php if($n == 0) echo 'active'; ?>">
-                                <img src="<?php echo $img['link_anh'] ?>" class="d-block w-100" alt="...">
+                                <img src="uploads/bds/<?php echo $img['link_anh'] ?>" class="d-block w-100" alt="...">
                             </div>
 
                             <?php

@@ -30,8 +30,7 @@
             'trangthai'=>0,
             'thanhtoan'=>$thanh_toan,
         ]);
-        echo 'thành công';
-        echo 'bạn hãy chuyển khoảng theo thông tin đã được cung cấp';
+        header('Location:../../../index.php?quanly=camon&id='.$ma_bds);
     }elseif($thanh_toan == 'vnpay'){
         require_once("../../../adminpanel/config/config_vnpay.php");
 

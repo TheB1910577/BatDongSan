@@ -1,4 +1,3 @@
-<p>sửa</p>
 <?php
     $sql = $pdo->prepare(
         "SELECT * FROM bat_dong_san as a, tinh as b 

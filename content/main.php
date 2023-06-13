@@ -45,6 +45,10 @@
                 elseif($tam == 'doimatkhau'){
                     include("content/main/ql_tk/doimatkhau.php");
                 }
+                elseif($tam == 'camon'){
+                    include("content/main/camon.php");
+                }
+
                 else {
                     include("content/main/index.php");
                 }
