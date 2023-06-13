@@ -73,7 +73,7 @@
 ?>
 <div class="container">
     <h3 style="text-align: center; padding-top: 15px;">Tài Khoản của tôi</h3>
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" id="taikhoan">
         <div style="text-align: center;">
             <label for="image-upload" class="image-container">
             <img class="avatar1" src="<?php if($row['avata']!=0) echo 'uploads/'.$row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">           
@@ -135,3 +135,27 @@
         </a>
     </form>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#taikhoan").validate({
+            rules:{
+                'hoten': {required: true},
+                'sdt': {required:true, number:true},
+                'cccd': {required: true, number:true},
+                'ngaysinh': {required:true},
+                'diachi':{required: true}            
+            },
+            messages:{
+                'hoten': {required: "không được bỏ trống thông tin"},
+                'sdt': {required: "không được bỏ trống thông tin", number:"chỉ được nhập số"},
+                'cccd': {required: "không được bỏ trống thông tin", number:"chỉ được nhập số"},
+                'ngaysinh': {required: "không được bỏ trống thông tin"},
+                'diachi':{required: "không được bỏ trống thông tin"}
+            }
+        })
+    })
+</script>

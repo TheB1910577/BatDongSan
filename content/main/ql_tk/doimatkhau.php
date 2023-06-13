@@ -22,7 +22,7 @@
 ?>
 <div class="container">
     <h3>đổi mật khẩu</h3>
-    <form action="" method="post">
+    <form method="post" id="doimk">
         <div class="form-group mb-3 row">
             <label for="matkhaucu" class="col-lg-2 col-md-2 col-sm-3 col-12 col offset-lg-1">Nhập mật khẩu cũ:</label>
             <div class="col-lg-7 col-md-9 col-sm-8 col-12">
@@ -40,3 +40,21 @@
         <button class="btn btn-primary offset-lg-3">Thay đổi</button>
     </form>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#doimk").validate({
+            rules:{
+                'matkhaucu': {required: true},
+                'matkhaumoi': {required:true},   
+            },
+            messages:{
+                'matkhaucu': {required: "không được bỏ trống"},
+                'matkhaumoi': {required: "không được bỏ trống"}, 
+            }
+        })
+    })
+</script>

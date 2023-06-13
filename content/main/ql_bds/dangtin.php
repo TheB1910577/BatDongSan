@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Đăng tin bất động sản</h1>
-    <form action="content/main/ql_bds/xulythanhtoan.php?id=<?php echo $_GET['id'] ?>" method="POST">
+    <form action="content/main/ql_bds/xulythanhtoan.php?id=<?php echo $_GET['id'] ?>" method="POST" id="dangtin">
         <div class="form-group mb-3 row">
             <label class="col-lg-2 col-md-3 col-sm-12 col-12 offset-lg-2 mb-3" for="tieude">TIÊU ĐỀ: </label>
             <div class="col-lg-5 col-md-8 col-sm-12 col-12">
@@ -143,3 +143,25 @@
         <button type="submit" class="btn btn-primary offset-lg-2" name="redirect">ĐĂNG BÀI</button>
     </form>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#dangtin").validate({
+            rules:{
+                'tieude': {required: true},
+                'gia': {required:true},
+                'mota': {required:true},
+                
+            },
+            messages:{
+                'tieude': {required: "không được bỏ trống"},
+                'gia': {required: "không được bỏ trống"},
+                'mota': {required: "không được bỏ trống"}, 
+            
+            }
+        })
+    })
+</script>
