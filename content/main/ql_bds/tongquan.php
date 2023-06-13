@@ -42,7 +42,7 @@
                 <td><?php echo $row['so_tang'] ?></td>
                 <td><?php echo $row['phap_ly'] ?></td>
                 <td>
-                    <a href="" class="btn btn-primary">Đăng tin</a>
+                    <a href="index.php?quanly=dangtin&id=<?php echo $row['ma_bds'] ?>" class="btn btn-primary">Đăng tin</a>
                     <button class="btn btn-success">Xem</button>
                     <a href="index.php?quanly=sua_bds&id=<?php echo $row['ma_bds'] ?>" class="btn btn-warning">Sửa</a>
                     <a href="content/main/ql_bds/xuly.php?xoa&id=<?php echo $row['ma_bds'] ?>" class="btn btn-danger">Xóa</a>

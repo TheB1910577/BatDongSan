@@ -24,6 +24,10 @@
                     include("content/main/ql_bds/sua.php");    
 
                 }
+                elseif($tam == 'dangtin'){
+                    include("content/main/ql_bds/dangtin.php");    
+
+                }
                 elseif($tam == 'dang_ky'){
                     include("content/main/dang_ky.php");  
                     
