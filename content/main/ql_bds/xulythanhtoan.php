@@ -34,10 +34,10 @@
     }elseif($thanh_toan == 'vnpay'){
         require_once("../../../adminpanel/config/config_vnpay.php");
 
-        $vnp_TxnRef = rand(1,1000); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-        $vnp_OrderInfo = 'billpayment test';
+        $vnp_TxnRef = $ma_bds; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo = $ma_bds;
         $vnp_OrderType = 'billpayment';
-        $vnp_Amount = 10000 * 100;
+        $vnp_Amount = $tienbaidang * 100;
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -91,6 +91,20 @@
             , 'message' => 'success'
             , 'data' => $vnp_Url);
             if (isset($_POST['redirect'])) {
+                $sql = $pdo -> prepare(
+                    "INSERT INTO tin_dang(tieu_de, gia_bds, loai_tin_dang, ma_bds, mo_ta, trangthai, thanhtoan)
+                    VALUES(:td, :gia, :loaitin, :ma, :mota, :trangthai, :thanhtoan)"
+                );
+                $sql->execute([
+                    'td'=>$tieu_de,
+                    'gia'=>$gia_bds,
+                    'loaitin'=>$loai_tin_dang,
+                    'ma'=>$ma_bds,
+                    'mota'=>$mo_ta,
+                    'trangthai'=>0,
+                    'thanhtoan'=>'vn_pay',
+                ]);
+                
                 header('Location: ' . $vnp_Url);
                 die();
             } else {

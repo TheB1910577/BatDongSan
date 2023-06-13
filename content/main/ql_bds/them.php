@@ -47,7 +47,7 @@ if(isset($_SESSION['dangnhap'])){
                     </div>
                     <div class="modal-body">
                         VIDEO HƯỚNG DẪN
-                        <iframe width="470" height="273" src="https://www.youtube.com/watch?v=sI6aDjzEL-8" title="Bài 95 : Lập trình Website PHP mô hình MVC  - Đánh giá sao 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="450" height="315" src="https://www.youtube.com/embed/sI6aDjzEL-8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ĐÓNG</button>
