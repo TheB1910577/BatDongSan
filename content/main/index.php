@@ -108,7 +108,7 @@
     a.ma_bds = b.ma_bds AND 
     trangthai = 1 
     ORDER BY loai_tin_dang DESC"
-    ORDER BY loai_tin_dang DESC"
+    
   );
   $stmt->execute();
 ?>
@@ -119,9 +119,7 @@
         $sql = $pdo->prepare("SELECT * FROM hinhanh WHERE ma_bds = :ma LIMIT 1");
         $sql->execute(['ma'=>$rows['ma_bds']]);
         $row = $sql->fetch();
-        $sql = $pdo->prepare("SELECT * FROM hinhanh WHERE ma_bds = :ma LIMIT 1");
-        $sql->execute(['ma'=>$rows['ma_bds']]);
-        $row = $sql->fetch();
+      
         
     ?>
   
@@ -129,7 +127,7 @@
       <div class="card h-100">
         <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $rows['ma_bds']; ?>">
           <img src="uploads/bds/<?php echo $row['link_anh'] ?>" class="card-img-top" alt="...">
-          <img src="uploads/bds/<?php echo $row['link_anh'] ?>" class="card-img-top" alt="...">
+          
           <div class="card-body">
             <h4 class="card-title"><?php echo $rows['tieu_de'] ?></h4>
             <h6>Giá tiền: <?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h6>

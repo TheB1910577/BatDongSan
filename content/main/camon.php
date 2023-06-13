@@ -51,7 +51,8 @@
     </div>
 
 <?php
-        }else{
+    }
+}if(isset($_GET['id'])){
 ?>
 <div class="container">
     <p>Cảm ơn bạn đã sử dụng dịch vụ đăng tin của chúng tôi</p><br>
@@ -61,8 +62,6 @@
     <p>Tên chủ tài khoản: LU HUNG CUONG</p><br>
     <p>Nội dung chuyển khoản: #<?php echo $_GET['id']?></p><br>
     <p>Sau khi nhận được chuyển khoản, chúng tôi sẽ duyệt ngay lập tức, trường hợp chậm trể bạn có thể nhắn qua fanfage FB</p>
-</div>
-<?php
-        }
-    }
+</div><?php
+}
 ?>
