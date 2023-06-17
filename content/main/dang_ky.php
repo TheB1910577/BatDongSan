@@ -52,7 +52,7 @@
 <div id="wrapper">
     <div class="container">
         <div class="row justify-content-around">
-            <form method="POST" class="col-md-6 bg-light p-3 my-3">
+            <form method="POST" class="col-md-6 bg-light p-3 my-3" id="dangky">
                 <h1 class="text-center text-uppercase h3 py-3">ĐĂNG KÝ</h1>
                     
                 <div class="mb-3">
@@ -115,3 +115,33 @@
         </div>
     </div>    
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#dangky").validate({
+            rules:{
+                'ten_tk': {required: true},
+                'email': {required: true, email: true},
+                'matkhau': {required: true},
+                'sdt': {required: true, number: true},
+                'cccd': {required: true, number: true},
+                'birthday': {required: true},
+                'diachi': {required: true},
+                           
+            },
+            messages:{
+                'ten_tk': {required: "không được bỏ trống thông tin"},
+                'email': {required: "không được bỏ trống thông tin", email: "sai định dạng email"},
+                'matkhau': {required: "không được bỏ trống thông tin"},
+                'sdt': {required: "không được bỏ trống thông tin", number: "Chỉ được nhập số"},
+                'cccd': {required: "không được bỏ trống thông tin", number: "Chỉ được nhập số"},
+                'birthday': {required: "không được bỏ trống thông tin"},
+                'diachi': {required: "không được bỏ trống thông tin"},
+                
+            }
+        })
+    })
+</script>

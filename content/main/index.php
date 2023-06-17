@@ -1,3 +1,10 @@
+<?php
+  require("carbon/autoload.php");
+  use Carbon\Carbon;
+  use Carbon\CarbonInterval;
+  $now = Carbon::now('Asia/Ho_Chi_Minh');
+  //echo $now->addDays(10);
+?>
 <div class="timkiem">
     <div class="search-container">
         <form action="#">
@@ -106,11 +113,12 @@
   $stmt = $pdo->prepare(
     "SELECT * FROM tin_dang as a, bat_dong_san as b WHERE
     a.ma_bds = b.ma_bds AND 
-    trangthai = 1 
+    trangthai = 1
+    AND ngay_het_han >= :ht 
     ORDER BY loai_tin_dang DESC"
     
   );
-  $stmt->execute();
+  $stmt->execute(['ht'=>$now]);
 ?>
 <div class="container">
   <div class="row row-cols-1 row-cols-md-3 g-4">

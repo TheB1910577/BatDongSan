@@ -1,6 +1,12 @@
 <?php
     include("../../../adminpanel/config/config.php");
-    echo $ma_bds = $_GET['id'];
+    require("../../../carbon/autoload.php");
+    use Carbon\Carbon;
+    use Carbon\CarbonInterval;
+    //printf("Now: %s", Carbon::now('Asia/Ho_Chi_Minh'));
+    $now = Carbon::now('Asia/Ho_Chi_Minh');
+    //printf("1 day: %s", CarbonInterval::day()->forHumans());
+    $ma_bds = $_GET['id'];
     $tieu_de = $_POST['tieude'];
     $gia_bds = $_POST['gia'];
     $mo_ta = $_POST['mota'];
@@ -9,22 +15,26 @@
 
     if($loai_tin_dang == 1){
         $tienbaidang = 90000;
+        $ngayhethan = $now->addDays(7);
     }
     elseif($loai_tin_dang == 2){
         $tienbaidang = 150000;
+        $ngayhethan = $now->addDays(10);
     }elseif($loai_tin_dang == 3){
         $tienbaidang = 190000;
+        $ngayhethan = $now->addDays(15);
     }
 
     if($thanh_toan == 'chuyenkhoan'){
         $stmt = $pdo -> prepare(
-            "INSERT INTO tin_dang(tieu_de, gia_bds, loai_tin_dang, ma_bds, mo_ta, trangthai, thanhtoan)
-            VALUES(:td, :gia, :loaitin, :ma, :mota, :trangthai, :thanhtoan)"
+            "INSERT INTO tin_dang(tieu_de, gia_bds, loai_tin_dang, ngay_het_han, ma_bds, mo_ta, trangthai, thanhtoan)
+            VALUES(:td, :gia, :loaitin, :hethan, :ma, :mota, :trangthai, :thanhtoan)"
         );
         $stmt->execute([
             'td'=>$tieu_de,
             'gia'=>$gia_bds,
             'loaitin'=>$loai_tin_dang,
+            'hethan'=>$ngayhethan,
             'ma'=>$ma_bds,
             'mota'=>$mo_ta,
             'trangthai'=>0,
@@ -92,13 +102,14 @@
             , 'data' => $vnp_Url);
             if (isset($_POST['redirect'])) {
                 $sql = $pdo -> prepare(
-                    "INSERT INTO tin_dang(tieu_de, gia_bds, loai_tin_dang, ma_bds, mo_ta, trangthai, thanhtoan)
-                    VALUES(:td, :gia, :loaitin, :ma, :mota, :trangthai, :thanhtoan)"
+                    "INSERT INTO tin_dang(tieu_de, gia_bds, loai_tin_dang, ngay_het_han, ma_bds, mo_ta, trangthai, thanhtoan)
+                    VALUES(:td, :gia, :loaitin, :hethan, :ma, :mota, :trangthai, :thanhtoan)"
                 );
                 $sql->execute([
                     'td'=>$tieu_de,
                     'gia'=>$gia_bds,
                     'loaitin'=>$loai_tin_dang,
+                    'hethan' => $ngayhethan,
                     'ma'=>$ma_bds,
                     'mota'=>$mo_ta,
                     'trangthai'=>0,
