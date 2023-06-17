@@ -19,7 +19,7 @@
                     include("models/quanlytindang/chitiettindangcuanguoidung.php");
                 }
                 else if($tam == 'thongke'){
-                    include("models/quanlytindang/thongke.php");
+                    include("models/thongke/thongke.php");
                 }
                 else {
                     include("models/index.php");

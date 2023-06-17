@@ -3,7 +3,7 @@
   use Carbon\Carbon;
   use Carbon\CarbonInterval;
   $now = Carbon::now('Asia/Ho_Chi_Minh');
-  //echo $now->addDays(10);
+  //echo $now->addDays(10)->toDateString();
 ?>
 <div class="timkiem">
     <div class="search-container">
