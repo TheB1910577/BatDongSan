@@ -22,13 +22,13 @@
             $img -> execute(['ma'=>$row['ma_bds']]);
             $pic=$img->fetch();
     ?>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col">
             <div class="card h-100">
                 <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $row['ma_bds']; ?>">
                 <img src="uploads/bds/<?php echo $pic['link_anh'] ?>" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h4 class="card-title"><?php echo substr($row['tieu_de'], 0, 50).'...' ?></h4>
+                    <h4 class="card-title gioihantieude"><?php echo $row['tieu_de']?></h4>
                     <h6>Giá tiền: <?php echo number_format($row['gia_bds'],0,',','.').' VND' ?></h6>
                     <h6>Địa chỉ: <?php echo $row['diachi'] ?></h6>
                     <h6>Thông tin: </h6>
