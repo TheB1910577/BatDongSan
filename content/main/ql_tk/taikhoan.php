@@ -23,7 +23,7 @@
                 if(in_array($file_extension, $valid_extension)){
                     move_uploaded_file($avt_tmp,'uploads/'.$atv);
                     $stmt = $pdo->prepare(
-                        "UPDATE taikhoan SET ten_taikhoan = :ten, avata = :avt ,sdt = :dt, cccd = :cccd, birthday = :sn, diachi=:dc
+                        "UPDATE taikhoan SET ten_taikhoan = :ten, avata = :avt ,sdt = :dt, cccd = :cccd, birthday = :sn, diachi_tk=:dc
                         WHERE id_taikhoan = :id"
                     );
                     $stmt->execute([
@@ -48,7 +48,7 @@
                 $diachi = $_POST['diachi'];
                 
                 $stmt = $pdo->prepare(
-                    "UPDATE taikhoan SET ten_taikhoan = :ten, sdt = :dt, cccd = :cccd, birthday = :sn, diachi=:dc
+                    "UPDATE taikhoan SET ten_taikhoan = :ten, sdt = :dt, cccd = :cccd, birthday = :sn, diachi_tk=:dc
                     WHERE id_taikhoan = :id"
                 );
                 $stmt->execute([
@@ -74,11 +74,45 @@
 <div class="container">
     <h3 style="text-align: center; padding-top: 15px;">Tài Khoản của tôi</h3>
     <form method="POST" enctype="multipart/form-data" id="taikhoan">
-        <div style="text-align: center;">
-            <label for="image-upload" class="image-container">
-            <img class="avatar1" src="<?php if($row['avata']!=0) echo 'uploads/'.$row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">           
-            <input type="file" id="image-upload" name="avt">
-        </div>
+    <div style="text-align: center;">
+           
+           <img id="myImg" class="avatar1" src="<?php if($row['avata']!=0) echo 'uploads/'.$row['avata']; 
+               else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
+                
+      
+           <!-- The Modal -->
+           <div id="myModal" class="modal">
+           <span class="close">&times;</span>
+           <img class="modal-content" id="img01">
+           <div id="caption"></div>
+           </div>
+
+           <script>
+           // Get the modal
+           var modal = document.getElementById("myModal");
+
+           // Get the image and insert it inside the modal - use its "alt" text as a caption
+           var img = document.getElementById("myImg");
+           var modalImg = document.getElementById("img01");
+           var captionText = document.getElementById("caption");
+           img.onclick = function(){
+           modal.style.display = "block";
+           modalImg.src = this.src;
+           captionText.innerHTML = this.alt;
+           }
+
+           // Get the <span> element that closes the modal
+           var span = document.getElementsByClassName("close")[0];
+
+           // When the user clicks on <span> (x), close the modal
+           span.onclick = function() { 
+           modal.style.display = "none";
+           }
+           </script>
+           
+       <label for="image-upload" class="image-container">          
+       <input type="file" id="image-upload" name="avt">
+   </div>
 
         <div class="form-group mb-3 mt-3 row">
             <label for="hoten" class="col-lg-2 col-md-2 col-sm-3 col-12 col offset-lg-1">Họ và tên:</label>
@@ -123,7 +157,7 @@
         <div class="form-group mb-3 row">
             <label for="diachi" class="col-lg-2 col-md-2 col-sm-3 col-12 col offset-lg-1">Địa chỉ:</label>
             <div class="col-lg-7 col-md-9 col-sm-8 col-12">
-                <input type="text" class="form-control" id="diachi" name="diachi" value="<?php echo $row['diachi'] ?>">
+                <input type="text" class="form-control" id="diachi" name="diachi" value="<?php echo $row['diachi_tk'] ?>">
                 <label class="error"></label>
             </div>
         </div>

@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['admin'])){
+        header('Location:dang_nhap_admin.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

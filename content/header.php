@@ -131,14 +131,14 @@
             ?>
             <div class="collapse navbar-collapse" id="navbarDropdown">
               <ul class="nguoidung navbar-nav" >
-                <li class="nav-item">
-                  <a href="">
+              <li class="nav-item">
+                  <a href="index.php?quanly=qltk">
                     <img class="avatar" src="<?php if($row['avata']!=0) echo 'uploads/'.$row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
                     
                   </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href=""><?php echo $row['ten_taikhoan'] ?></a>
+                    <a class="nav-link" href="index.php?quanly=qltk"><?php echo $row['ten_taikhoan'] ?></a>
                 </li>
               </ul> 
                 <?php } else { ?>

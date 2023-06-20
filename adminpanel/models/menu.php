@@ -7,12 +7,6 @@
             <a href="#">Quản lý tin đăng</a>
             <ul class="menu-item">
                 <li>
-                    <a href="">Thêm tin đăng cho admin</a>
-                </li>
-                <li>
-                    <a href="">Xem tin đăng của admin</a>
-                </li>
-                <li>
                     <a href="index.php?quanly=lietketindang">Xem tin đăng người dùng</a>
                 </li>              
             </ul>

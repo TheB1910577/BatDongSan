@@ -147,9 +147,7 @@
                     <?php echo $row['maplink'] ?>
                 </div>
                 <br>
-                <div class="row">
-                    <h4>Được quan tâm nhiều</h4>
-                </div>
+                
 
                         
 
@@ -229,8 +227,11 @@
   );
   $stmt->execute(['ht'=>$now]);
 ?>
+<br>
+<h4>Được quan tâm nhiều</h4>
+<br>
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="slick">
     <?php
      while($rows = $stmt->fetch()){
       $sql = $pdo->prepare("SELECT * FROM hinhanh WHERE ma_bds = :ma LIMIT 1");
@@ -240,23 +241,24 @@
     ?>
   
     <div class="col">
-      <div class="card h-100">
+        
+      <div class="card h-100 ">
         <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $rows['ma_bds']; ?>">
-          <img src="uploads/bds/<?php echo $row['link_anh'] ?>" class="card-img-top" alt="...">
+          <img src="uploads/bds/<?php echo $row['link_anh'] ?>" class="card-img-top cover object" alt="...">
           <div class="card-body">
             <div class="row">
-            <h3 class="card-title"><?php echo $rows['tieu_de'] ?></h3>
+            <h4 class="card-title gioihanvanban"><?php echo $rows['tieu_de'] ?></h4>
               <div class="col-md-8">
-              <h4 class="green"><?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h4>
+              <h6 class="green"><?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h6>
               </div>
               <div class="col-md-4">
-              <h4 class="orange"><?php echo ($rows['dien_tich']).' m2' ?></h4>
+              <h6 class="orange"><?php echo ($rows['dien_tich']).' m2' ?></h6>
               </div>
             </div>
             
             
             
-            <h5><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h5>
+            <h6 class="gioihanvanban"><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h6>
             <div class="row">
               <div class="col-md-2">
               <img class="avatar" src="<?php if($rows['avata']!=0) echo 'uploads/'.$rows['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
