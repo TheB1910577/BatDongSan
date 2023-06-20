@@ -103,30 +103,56 @@
 
                 
             }
-            $sql = $pdo->prepare(
-                "UPDATE bat_dong_san SET 
-                    ten_bds = :ten, 
-                    diachi = :dc, 
-                    maplink = :maps, 
-                    dien_tich = :dt, 
-                    so_phong = :sp,
-                    so_tang = :st,
-                    id_loai = :id_loai,
-                    id_tinh = :id_tinh
-                WHERE ma_bds = :ma
-                "
-            );
-            $sql->execute([
-                'ten' => $tieude,
-                'dc' => $diachi,
-                'maps' => $maps,
-                'dt' => $dientich,
-                'sp' => $sophong,
-                'st' => $sotang,
-                'id_loai' => $id_loai,
-                'id_tinh' => $id_tinh,
-                'ma' => $_GET['id']
-            ]);
+        
+            if($_POST['maps'] != ''){
+                $sql = $pdo->prepare(
+                    "UPDATE bat_dong_san SET 
+                        ten_bds = :ten, 
+                        diachi = :dc, 
+                        maplink = :maps, 
+                        dien_tich = :dt, 
+                        so_phong = :sp,
+                        so_tang = :st,
+                        id_loai = :id_loai,
+                        id_tinh = :id_tinh
+                    WHERE ma_bds = :ma
+                    "
+                );
+                $sql->execute([
+                    'ten' => $tieude,
+                    'dc' => $diachi,
+                    'maps' => $maps,
+                    'dt' => $dientich,
+                    'sp' => $sophong,
+                    'st' => $sotang,
+                    'id_loai' => $id_loai,
+                    'id_tinh' => $id_tinh,
+                    'ma' => $_GET['id']
+                ]);
+            }else{
+                $sql = $pdo->prepare(
+                    "UPDATE bat_dong_san SET 
+                        ten_bds = :ten, 
+                        diachi = :dc,  
+                        dien_tich = :dt, 
+                        so_phong = :sp,
+                        so_tang = :st,
+                        id_loai = :id_loai,
+                        id_tinh = :id_tinh
+                    WHERE ma_bds = :ma
+                    "
+                );
+                $sql->execute([
+                    'ten' => $tieude,
+                    'dc' => $diachi,
+                    'dt' => $dientich,
+                    'sp' => $sophong,
+                    'st' => $sotang,
+                    'id_loai' => $id_loai,
+                    'id_tinh' => $id_tinh,
+                    'ma' => $_GET['id']
+                ]);
+            }
             header("location:../../../index.php?quanly=batdongsancuatoi");
         }  
     }

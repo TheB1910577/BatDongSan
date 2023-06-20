@@ -38,7 +38,7 @@
             <div class="form-group row">
                 <label class="col-lg-2 col-md-3 col-sm-12 col-12 offset-lg-2 mb-3" for="maps">LINK MAPS: </label>
                 <div class="col-lg-5 col-md-8 col-sm-12 col-12">
-                    <input class="form-control" type="text" name="maps" id="maps" multiple value="<?php echo $row['maplink'] ?>">
+                    <input class="form-control" type="text" name="maps" id="maps">
                     <label class="error"></label>
                 </div> 
             </div>

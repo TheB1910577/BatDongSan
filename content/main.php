@@ -49,7 +49,7 @@
                     include("content/main/camon.php");
                 }
                 elseif($tam == 'timkiem'){
-                    include("content/main/tim_kiem.php");
+                    include("content/main/timkiem.php");
                 }
 
                 else {
