@@ -6,22 +6,24 @@
         AND a.id_taikhoan = c.id_taikhoan"
     );
     $stmt->execute(['id'=>$id]);
-    $row = $stmt -> fetch();
+    
     $count = $stmt->rowCount();
 
 ?>
 <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
     <?php
         if($count < 1){
-            echo 'bạn chưa có bất động sản';
+            echo 'Không có bất động sản nào khác';
         }else{
+            while($row = $stmt->fetch()){
             $img = $pdo->prepare(
                 "SELECT * FROM hinhanh WHERE ma_bds = :ma"
             );
             $img -> execute(['ma'=>$row['ma_bds']]);
             $pic=$img->fetch();
     ?>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    
         <div class="col">
             <div class="card h-100">
                 <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $row['ma_bds']; ?>">
@@ -38,8 +40,9 @@
                 </a>
             </div>
         </div>
-    </div>
+    
     <?php
-        }
+        }}
     ?>
+    </div>
 </div>
