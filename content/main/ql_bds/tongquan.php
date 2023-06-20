@@ -47,7 +47,18 @@
                 <td><?php echo $row['so_tang'] ?></td>
                 <td><?php echo $row['phap_ly'] ?></td>
                 <td>
-                    <?php if($count < 1) {?><a href="index.php?quanly=dangtin&id=<?php echo $row['ma_bds'] ?>" class="btn btn-primary">Đăng tin</a><?php }?>
+                    <?php 
+                        if($count < 1) {
+                    ?>
+                    <a href="index.php?quanly=dangtin&id=<?php echo $row['ma_bds'] ?>" class="btn btn-primary">Đăng tin</a>
+                    <?php 
+                        }else{
+                    ?>
+                    <a href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $row['ma_bds'] ?>" class="btn btn-primary">Xem</a>
+                    <?php   
+                        }
+                    ?>
+                    <a href="index.php?quanly=themtienich&id=<?php echo $row['ma_bds'] ?>" class="btn btn-warning">Thêm tiện ích</a>
                     <a href="index.php?quanly=sua_bds&id=<?php echo $row['ma_bds'] ?>" class="btn btn-warning">Sửa</a>
                     <a href="content/main/ql_bds/xuly.php?xoa&id=<?php echo $row['ma_bds'] ?>" class="btn btn-danger">Xóa</a>
                 </td>

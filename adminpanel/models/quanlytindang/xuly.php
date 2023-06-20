@@ -33,7 +33,7 @@
             $sql = $pdo->prepare("UPDATE thong_ke SET doanh_so = :ds, tong_don = :td WHERE ngay = :ht");
             $sql->execute([
                 'ds'=>$doanhso,
-                'td'=>$tong_don+1,
+                'td'=>$tong_don,
                 'ht'=>$now
             ]);
 
