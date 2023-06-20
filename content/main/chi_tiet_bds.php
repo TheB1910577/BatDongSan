@@ -1,4 +1,11 @@
 <?php
+  require("carbon/autoload.php");
+  use Carbon\Carbon;
+  use Carbon\CarbonInterval;
+  $now = Carbon::now('Asia/Ho_Chi_Minh');
+  //echo $now->addDays(10)->toDateString();
+?>
+<?php
     $bds = $pdo->prepare(
         "SELECT * FROM bat_dong_san as a, taikhoan as b, tin_dang as c
         WHERE a.ma_bds = c.ma_bds AND a.id_taikhoan = b.id_taikhoan
@@ -74,27 +81,27 @@
                 <br>
                 <div class="row">
                     <!--open title-->
-                    <h4><?php echo $row['tieu_de'] ?></h4>
+                    <h1><?php echo $row['tieu_de'] ?></h1>
                 </div>
                 <!--end title-->
-
+<br>
                 <div class="row">
                     <!--open info row-->
                     <div class="col">
                         <div class="row">Mức Giá</div>
-                        <div class="row"><?php echo number_format($row['gia_bds'],0,',','.').' VND' ?></div>
+                        <div class="row green"><?php echo number_format($row['gia_bds'],0,',','.').' VND' ?></div>
                     </div>
                     <div class="col">
                         <div class="row">Diện Tích</div>
-                        <div class="row"><?php echo $row['dien_tich'].'m2' ?></div>
+                        <div class="row green"><?php echo $row['dien_tich'].'m2' ?></div>
                     </div>
                     <div class="col">
                         <div class="row">Số Phòng</div>
-                        <div class="row"><?php echo $row['so_phong'] ?></div>
+                        <div class="row green"><?php echo $row['so_phong'] ?></div>
                     </div>
                     <div class="col">
                         <div class="row">Số Tầng</div>
-                        <div class="row"><?php echo $row['so_tang'] ?></div>
+                        <div class="row green"><?php echo $row['so_tang'] ?></div>
                     </div>
                     <div class="col">
                         <i id="myIcon" style='font-size: 50px; color: red' class='fa fa-heart-o'></i>
@@ -103,7 +110,7 @@
                 <!--close info row-->
                 <br>
                 <div class="row">
-                    <h5>Thông tin mô tả</h5>
+                    <h4>Thông tin mô tả</h4>
                 </div>
 
                 <div class="row">
@@ -119,7 +126,7 @@
                     $tiennghi->execute(['ma_bds'=>$_GET['ma_bds']]);
                 ?>
                 <div class="row">
-                    <h5>Tiện nghi và nội thất</h5>
+                    <h4>Tiện nghi và nội thất</h4>
                 </div>
                 <div class="row">
                     <?php
@@ -133,7 +140,7 @@
                 <br>
 
                 <div class="row">
-                    <h5>Vị trí bất động sản trên bản đồ</h5>
+                    <h4>Vị trí bất động sản trên bản đồ</h4>
                 </div>
 
                 <div class="row">
@@ -141,24 +148,27 @@
                 </div>
                 <br>
                 <div class="row">
-                    <h5>Được quan tâm nhiều</h5>
+                    <h4>Được quan tâm nhiều</h4>
                 </div>
 
-                <div>
+                        
+
+                <!-- <div>
                     <div class="container">
                         <div class="row row-cols-1 row-cols-md-3 g-4">
                             <?php
                                 $stmt = $pdo->prepare(
                                     "SELECT * FROM tin_dang as a, bat_dong_san as b
-                                    WHERE a.ma_bds = b.ma_bds ORDER BY loai_tin_dang DESC LIMIT 10"
+                                    WHERE a.ma_bds = b.ma_bds ORDER BY loai_tin_dang DESC LIMIT 3"
                                 );
                                 $stmt->execute();
                                 while($nearing = $stmt->fetch()){
                             ?>
                             <div class="col">
                                 <div class="card h-100">
-                                    <img src="https://staticg.sportskeeda.com/editor/2022/04/52730-16501588848206-1920.jpg" class="card-img-top" alt="...">
+                                    
                                     <div class="card-body">
+                                    <img src="uploads/bds/<?php echo $nearing['link_anh'] ?>" class="card-img-top" alt="...">
                                         <h4 class="card-title"><?php echo $nearing['tieu_de'] ?></h4>
                                         <h6>Giá tiền: <?php echo number_format($nearing['gia_bds'],0,',','.').' VND'?></h6>
                                         <h6>Địa chỉ: <?php echo $nearing['diachi'] ?></h6>
@@ -175,36 +185,96 @@
 
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             
             <div class="col-lg-4 col-md-3 col-sm-12">
                 <div class="row"><h3>Người đăng bán</h3></div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-md-2">
                         <img src="<?php if($row['avata']!='') echo 'uploads/'.$row['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="Avatar" class="avatar">
                     </div>
-                    <div class="col">
+                    <div class="col-md-10">
                        <h4><?php echo $row['ten_taikhoan'] ?></h4>
                     </div>
                 </div>
 
                 <div class="row">
-                    <h4>
-                        <i class='fas fa-phone-alt' style='color:#35f37e'></i> (sdt<?php echo $row['sdt'] ?>)</h4>
+                    <h4 class="green">
+                        <i class='fas fa-phone-alt' style='color:#35f37e'></i> <?php echo $row['sdt'] ?></h4>
                 </div>
                 <div class="row">
-                    <h4>
-                        <i class='fas fa-mail-bulk'></i> (<?php echo $row['email'] ?>)</h4>
+                    <h4 class="orange">
+                        <i class='fas fa-mail-bulk'></i> <?php echo $row['email'] ?></h4>
                 </div>  
                 <div class="row">
-                    <a href="index.php?quanly=tindang&id=<?php echo $row['id_taikhoan']; ?>" class="btn btn-success"> Tất cả bất động sản khác của (<?php echo $row['ten_taikhoan'] ?>)</a>
+                    <a href="index.php?quanly=tindang&id=<?php echo $row['id_taikhoan']; ?>" class="btn btn-success"> Tất cả bất động sản khác của <?php echo $row['ten_taikhoan'] ?></a>
                 </div>  
             </div>
 
             
 
         </div>
+
+        <?php
+  //echo $_SESSION['dangnhap'];
+  $stmt = $pdo->prepare(
+    "SELECT * FROM tin_dang as a, bat_dong_san as b, taikhoan as c WHERE
+    a.ma_bds = b.ma_bds AND 
+    b.id_taikhoan = c.id_taikhoan AND 
+    trangthai = 1
+    AND ngay_het_han >= :ht 
+    ORDER BY loai_tin_dang DESC"
+    
+  );
+  $stmt->execute(['ht'=>$now]);
+?>
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <?php
+     while($rows = $stmt->fetch()){
+      $sql = $pdo->prepare("SELECT * FROM hinhanh WHERE ma_bds = :ma LIMIT 1");
+      $sql->execute(['ma'=>$rows['ma_bds']]);
+      $row = $sql->fetch();
+        
+    ?>
+  
+    <div class="col">
+      <div class="card h-100">
+        <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $rows['ma_bds']; ?>">
+          <img src="uploads/bds/<?php echo $row['link_anh'] ?>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <div class="row">
+            <h3 class="card-title"><?php echo $rows['tieu_de'] ?></h3>
+              <div class="col-md-8">
+              <h4 class="green"><?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h4>
+              </div>
+              <div class="col-md-4">
+              <h4 class="orange"><?php echo ($rows['dien_tich']).' m2' ?></h4>
+              </div>
+            </div>
+            
+            
+            
+            <h5><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h5>
+            <div class="row">
+              <div class="col-md-2">
+              <img class="avatar" src="<?php if($rows['avata']!=0) echo 'uploads/'.$rows['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
+              </div>
+              <div class="col-md-10 pt-2">
+              <h5><?php echo $rows['ten_taikhoan'] ?></h5>
+              </div>
+            </div>
+          
+          </div>
+        </a>
+      </div>
+    </div>
+    <?php
+      }
+    ?>
+  </div>
+</div>
         <!--end row lv1-->
     </div>
 

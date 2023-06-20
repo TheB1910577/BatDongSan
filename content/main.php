@@ -48,6 +48,9 @@
                 elseif($tam == 'camon'){
                     include("content/main/camon.php");
                 }
+                elseif($tam == 'timkiem'){
+                    include("content/main/timkiem.php");
+                }
 
                 else {
                     include("content/main/index.php");

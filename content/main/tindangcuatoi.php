@@ -16,7 +16,7 @@
             echo 'bạn chưa có bất động sản';
         }else{
             $img = $pdo->prepare(
-                "SELECT * FROM hinhanh WHERE ma_bds = :ma LIMIT 1"
+                "SELECT * FROM hinhanh WHERE ma_bds = :ma"
             );
             $img -> execute(['ma'=>$row['ma_bds']]);
             $pic=$img->fetch();
@@ -25,7 +25,7 @@
         <div class="col">
             <div class="card h-100">
                 <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $row['ma_bds']; ?>">
-                <img src="<?php echo $pic['link_anh'] ?>" class="card-img-top" alt="...">
+                <img src="uploads/bds/<?php echo $pic['link_anh'] ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $row['tieu_de'] ?></h4>
                     <h6>Giá tiền: <?php echo number_format($row['gia_bds'],0,',','.').' VND' ?></h6>

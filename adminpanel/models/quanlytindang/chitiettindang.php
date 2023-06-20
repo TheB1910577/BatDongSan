@@ -138,42 +138,9 @@ $tiennghi->execute(['ma_bds'=>$_GET['ma_bds']]);
                     <?php echo $row['maplink'] ?>
                 </div>
                 <br>
-                <div class="row">
-                    <h5>Được quan tâm nhiều</h5>
-                </div>
+               
 
-                <div>
-                    <div class="container">
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
-                            <?php
-                                $stmt = $pdo->prepare(
-                                    "SELECT * FROM tin_dang as a, bat_dong_san as b
-                                    WHERE a.ma_bds = b.ma_bds ORDER BY loai_tin_dang DESC LIMIT 10"
-                                );
-                                $stmt->execute();
-                                while($nearing = $stmt->fetch()){
-                            ?>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="https://staticg.sportskeeda.com/editor/2022/04/52730-16501588848206-1920.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h4 class="card-title"><?php echo $nearing['tieu_de'] ?></h4>
-                                        <h6>Giá tiền: <?php echo number_format($nearing['gia_bds'],0,',','.').' VND'?></h6>
-                                        <h6>Địa chỉ: <?php echo $nearing['diachi'] ?></h6>
-                                        <h6>Thông tin:</h6>
-                                        <p class="card-text">
-                                            <?php echo $row['mo_ta'] ?>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                                }
-                            ?>
-
-                        </div>
-                    </div>
-                </div>
+               
             </div>
             
             <div class="col-lg-4 col-md-3 col-sm-12">
