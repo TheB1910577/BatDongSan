@@ -157,7 +157,7 @@
         }  
     }
     if(isset($_GET['xoa'])){
-        $rm = $pdo->prepare("UPDATE tin_dang SET trangthai = 0 WHERE ma_bds = '".$_GET['id']."'");
+        $rm = $pdo->prepare("UPDATE tin_dang SET trangthai = -1 WHERE ma_bds = '".$_GET['id']."'");
         $rm->execute();
         $del = $pdo->prepare("UPDATE bat_dong_san SET hien_thi = 0 WHERE ma_bds = '".$_GET['id']."'");
         $del->execute();

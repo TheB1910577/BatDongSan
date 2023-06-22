@@ -1,4 +1,7 @@
 <?php
+    require("carbon/autoload.php");
+    use Carbon\Carbon;
+    $now = Carbon::now('Asia/Ho_Chi_Minh');
     $stmt = $pdo->prepare(
         "SELECT * FROM bat_dong_san as a, taikhoan as b
         WHERE a.id_taikhoan = b.id_taikhoan
@@ -35,7 +38,10 @@
                 $i=1;
                 while($row = $stmt->fetch()){
                     $sql = $pdo->prepare("SELECT * FROM tin_dang WHERE ma_bds = :ma AND ngay_het_han < :ht");
-                    $sql->execute(['ma'=>$row['ma_bds']]);
+                    $sql->execute([
+                        'ma'=>$row['ma_bds'],
+                        'ht'=>$now
+                    ]);
                     $count = $sql->rowCount();
             ?>
             <tr>

@@ -12,7 +12,7 @@
       if($count == 1){ 
         
         
-        $_SESSION['admin']=1;
+        $_SESSION['admin']= $row['ten_taikhoan'];
         echo $_SESSION['admin'];
         header("location:index.php");
       }else{

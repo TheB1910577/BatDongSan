@@ -12,8 +12,8 @@
         <a href="index.php"><img src="../images/logo.png" alt=""></a>
         </div>
         <ul class="nav  navbar-right">
-            <li><span class="glyphicon glyphicon-user"></span> <?php if(isset($_SESSION['dangnhap'])){  
-                    echo $_SESSION['dangnhap'];               
+            <li><span class="glyphicon glyphicon-user"></span> <?php if(isset($_SESSION['admin'])){  
+                    echo $_SESSION['admin'];               
                 }?></li>
             <li><a href="index.php?dangxuat=1"><span class="glyphicon glyphicon-log-in"></span> Đăng xuất</a></li>
         </ul>
