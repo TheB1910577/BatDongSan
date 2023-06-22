@@ -34,7 +34,7 @@
             <?php
                 $i=1;
                 while($row = $stmt->fetch()){
-                    $sql = $pdo->prepare("SELECT * FROM tin_dang WHERE ma_bds = :ma");
+                    $sql = $pdo->prepare("SELECT * FROM tin_dang WHERE ma_bds = :ma AND ngay_het_han < :ht");
                     $sql->execute(['ma'=>$row['ma_bds']]);
                     $count = $sql->rowCount();
             ?>
@@ -52,10 +52,6 @@
                     ?>
                     <a href="index.php?quanly=dangtin&id=<?php echo $row['ma_bds'] ?>" class="btn btn-primary">Đăng tin</a>
                     <?php 
-                        }else{
-                    ?>
-                    <a href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $row['ma_bds'] ?>" class="btn btn-primary">Xem</a>
-                    <?php   
                         }
                     ?>
                     <a href="index.php?quanly=themtienich&id=<?php echo $row['ma_bds'] ?>" class="btn btn-warning">Thêm tiện ích</a>
