@@ -1,32 +1,45 @@
 <div style="text-align: center;">
     Thống kê sơ bộ
 </div>
-<div id="bar-example" style="height: 250px;" class="container"></div>
+<div class="container">
+<select name="" id="boloc">
+    <option value="15">7 ngày qua</option>
+    <option value="15">15 ngày qua</option>
+    <option value="30">30 ngày qua</option>
+    <option value="90">90 ngày qua</option>
+    <option value="365">1 năm qua</option>
+</select>
+</div>
+<div id="area-example" style="height: 250px;" class="container"></div>
 
 <script>
     $(document).ready(function(){
         thongke();
-        var char = new Morris.Bar({
-            element: 'bar-example',
-            // data: [
-            //     { y: '2006-12-12', a: 100, b: 900000 },
-            //     { y: '2007-12-12', a: 75,  b: 650000 },
-            //     { y: '2008-12-12', a: 50,  b: 400000 },
-            //     { y: '2009-12-12', a: 75,  b: 650000 },
-            //     { y: '2010-12-12', a: 50,  b: 400000 },
-            //     { y: '2011-12-12', a: 75,  b: 650000 },
-            //     { y: '2012-12-12', a: 100, b: 900000 }
-            // ],
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            labels: ['Số tin được đăng', 'Lợi nhuận']
+        var char = new Morris.Line({
+        element: 'area-example',
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['Doanh số']
         });
+
+        $(document).on('change', '#boloc', function(){
+            var thoigian = $(this).val();
+            $.ajax({
+                url:"models/thongke/xuly.php",
+                method:"POST",
+                dataType:"JSON",
+                data:{thoigian: thoigian},
+                success:function(data){
+                    char.setData(data);
+                }
+            })
+        })
+
         function thongke(){
             $.ajax({
                 url:"models/thongke/xuly.php",
                 method:"POST",
                 dataType:"JSON",
-                
                 success:function(data){
                     char.setData(data);
                 }

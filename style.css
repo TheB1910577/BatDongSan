@@ -93,9 +93,7 @@
     text-decoration: none;
     
 }
-/* .card a:hover{
-    color: rgb(148, 152, 148);
-} */
+
 
 .footer{
     padding-top: 50px;
@@ -238,7 +236,7 @@
     text-decoration: none;
     
 }
-.card a:hover{
+.card:hover{
     border: 1px solid #d0cece44;
     box-shadow: 0 7px 50px 10px #000000aa;
     transform: scale(1.015);
@@ -263,6 +261,7 @@
 .cover1{
     object-fit: cover;
 }
+
 .footer{
     padding-top: 50px;
 }
@@ -348,12 +347,20 @@
 
 .top-left {
     left: 500px ;
-  }
+}
+
 .gioihanvanban{
     overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 2; /* Số dòng tối đa */
+        -webkit-box-orient: vertical; 
+}
+.gioihanvanban1{
+    overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Số dòng tối đa */
         -webkit-box-orient: vertical; 
 }
 /* avata */
@@ -435,4 +442,41 @@
       width: 100%;
     }
   }
+/* foodter */
+.footer li a{
+    text-decoration: none;
+}
+.avatarto {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 0.5px;
+    background-color: rgb(65, 65, 65);
+  }
+.nenxam{
+    background-color: #eef1f3;
+    border-radius: 10px;
+  }
+  .nenxamcard{
+    background-color: #eef1f3;
+    border-radius: 10px;
 
+  }
+  .nenxanh{
+    background-color: #50b90b;
+  }
+  .nencam{
+    background-color: #cb4b00;
+  }
+  .nenblue{
+    background-color: #0099ff;
+  }
+  .nenvang{
+    background-color: #e2cf00;
+  }
+  .property {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+  }

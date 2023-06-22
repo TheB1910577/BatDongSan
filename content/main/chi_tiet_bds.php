@@ -147,8 +147,43 @@
                     <?php echo $row['maplink'] ?>
                 </div>
                 <br>
-               
-                                  
+                
+
+                        
+
+                <!-- <div>
+                    <div class="container">
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <?php
+                                $stmt = $pdo->prepare(
+                                    "SELECT * FROM tin_dang as a, bat_dong_san as b
+                                    WHERE a.ma_bds = b.ma_bds ORDER BY loai_tin_dang DESC LIMIT 3"
+                                );
+                                $stmt->execute();
+                                while($nearing = $stmt->fetch()){
+                            ?>
+                            <div class="col">
+                                <div class="card h-100">
+                                    
+                                    <div class="card-body">
+                                    <img src="uploads/bds/<?php echo $nearing['link_anh'] ?>" class="card-img-top" alt="...">
+                                        <h4 class="card-title"><?php echo $nearing['tieu_de'] ?></h4>
+                                        <h6>Giá tiền: <?php echo number_format($nearing['gia_bds'],0,',','.').' VND'?></h6>
+                                        <h6>Địa chỉ: <?php echo $nearing['diachi'] ?></h6>
+                                        <h6>Thông tin:</h6>
+                                        <p class="card-text">
+                                            <?php echo $row['mo_ta'] ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                                }
+                            ?>
+
+                        </div>
+                    </div>
+                </div> -->
             </div>
             
             <div class="col-lg-4 col-md-3 col-sm-12">
@@ -212,24 +247,24 @@
           <img src="uploads/bds/<?php echo $row['link_anh'] ?>" class="card-img-top cover object" alt="...">
           <div class="card-body">
             <div class="row">
-            <h4 class="card-title gioihanvanban"><?php echo $rows['tieu_de'] ?></h4>
+            <h4 class="card-title gioihanvanban1"><?php echo $rows['tieu_de'] ?></h4>
               <div class="col-md-8">
-              <h6 class="green"><?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h6>
+              <h6 class="green gioihanvanban1"><?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h6>
               </div>
               <div class="col-md-4">
-              <h6 class="orange"><?php echo ($rows['dien_tich']).' m2' ?></h6>
+              <h6 class="orange gioihanvanban1"><?php echo ($rows['dien_tich']).' m2' ?></h6>
               </div>
             </div>
             
             
             
-            <h6 class="gioihanvanban"><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h6>
+            <h6 class="gioihanvanban1"><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h6>
             <div class="row">
               <div class="col-md-2">
               <img class="avatar" src="<?php if($rows['avata']!=0) echo 'uploads/'.$rows['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
               </div>
               <div class="col-md-10 pt-2">
-              <h5><?php echo $rows['ten_taikhoan'] ?></h5>
+              <h5 class="gioihanvanban1"><?php echo $rows['ten_taikhoan'] ?></h5>
               </div>
             </div>
           

@@ -21,7 +21,7 @@
         if($found_mail== false && $found_usn==false){ 
             try{
                 $stmt = $pdo->prepare(
-                    "INSERT INTO taikhoan(ten_taikhoan, email, sdt, cccd, diachi, matkhau, birthday) 
+                    "INSERT INTO taikhoan(ten_taikhoan, email, sdt, cccd, diachi_tk, matkhau, birthday) 
                     VALUES(:ten, :mail, :sdt, :cccd, :diachi, :mk, :sn)"
                 );
                 $stmt->execute([
@@ -34,7 +34,7 @@
                     'sn'=>$birthday
                 ]);
                 $_SESSION['dangky'] = 1;
-                header('Location:index.php');
+                header('Location:index.php');  
             }catch(Exception $e){
                 echo 'đã có lỗi xãy ra';
             }

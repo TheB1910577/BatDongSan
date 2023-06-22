@@ -139,3 +139,35 @@ if(isset($_SESSION['dangnhap'])){
     <?php
     }
     ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('#dangbds').validate({
+                rules:{
+                    tieude:{required: true},
+                    diachi:{required: true},
+                    'files[]':{required:true},
+                    maps:{required: true},
+                    dientich:{required: true},
+                    loaibds:{required: true},
+                    'tinh': {required: true},
+                    'sohong':{required: true},
+                    'agree':{required:true}
+                },
+                messages:{
+                    tieude:{required: "BẠN CHƯA NHẬP TIÊU ĐỀ"},
+                    diachi:{required: "BẠN CHƯA NHẬP ĐỊA CHỈ CỦA BẤT ĐỘNG SẢN"},
+                    'files[]':{required:"BẠN CHƯA CÓ HÌNH ẢNH CỦA BẤT ĐỘNG SẢN"},
+                    maps:{required: "BẠN CHƯA NHẬP LINK MAPS"},
+                    dientich:{required: "BẠN CHƯA NHẬP DIỆN TÍCH"},
+                    loaibds:{required: "BẠN CHƯA CHỌN LOẠI BẤT ĐỘNG SẢN"},
+                    'tinh': {required: "BẠN PHẢI CHỌN TỈNH THÀNH CỦA MÌNH"},
+                    'sohong':{required: "BẠN PHẢI ĐẢM BẢO ĐẦY ĐỦ PHÁP LÝ"},
+                    'agree':{required:"BẠN PHẢI ĐỌC KỸ CÁC ĐIỀU KHOẢN CỦA CHÚNG TỐI, VÀ PHẢI XÁC NHẬN"}
+                }
+            })
+        })
+    </script>

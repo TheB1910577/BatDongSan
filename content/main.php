@@ -51,6 +51,9 @@
                 elseif($tam == 'timkiem'){
                     include("content/main/timkiem.php");
                 }
+                elseif($tam == 'themtienich'){
+                    include("content/main/ql_bds/themtienich.php");
+                }
 
                 else {
                     include("content/main/index.php");

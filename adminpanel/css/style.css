@@ -17,7 +17,9 @@ body{
     clear: both;
 }
 
-
+.nav-menu{
+    *zoom: 1;
+}
 
 .menu,
 .submenu{

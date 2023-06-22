@@ -6,7 +6,6 @@
         <li>
             <a href="#">Quản lý tin đăng</a>
             <ul class="menu-item">
-               
                 <li>
                     <a href="index.php?quanly=lietketindang">Xem tin đăng người dùng</a>
                 </li>              
