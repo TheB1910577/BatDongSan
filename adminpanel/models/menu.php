@@ -13,6 +13,14 @@
         </li>
         <li><a href="index.php?quanly=duyettindang">Duyệt tin đăng</a></li>
         <li><a href="index.php?quanly=thongke">Thống kê</a></li>
+        <li><a href="index.php?quanly=tienich">Quản lý tiện ích</a></li>
+        <?php
+            if(isset($_SESSION['admin'])){
+        ?>
+        <li><a href="index.php?dangxuat=1">Đăng xuất</a></li>
+        <?php
+            }
+        ?>
         
     </ul>
 </nav>

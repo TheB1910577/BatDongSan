@@ -21,6 +21,13 @@
                 else if($tam == 'thongke'){
                     include("models/thongke/thongke.php");
                 }
+                else if($tam == 'tienich'){
+                    include("models/ql_tienich/them.php");
+                    include("models/ql_tienich/lietke.php");
+                }
+                else if($tam == 'suatienich'){
+                    include("models/ql_tienich/sua.php");
+                }
                 else {
                     include("models/index.php");
                 }
