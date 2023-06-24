@@ -1,11 +1,19 @@
 <?php
+    require("carbon/autoload.php");
+    use Carbon\Carbon;
+    $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
     $id = $_GET['id'];
     $stmt = $pdo->prepare("SELECT * FROM bat_dong_san as a, tin_dang as b, taikhoan as c
         WHERE c.id_taikhoan = :id
         AND b.ma_bds = a.ma_bds
-        AND a.id_taikhoan = c.id_taikhoan"
+        AND a.id_taikhoan = c.id_taikhoan
+        AND ngay_het_han > :ht
+        AND trangthai = 1"
     );
-    $stmt->execute(['id'=>$id]);
+    $stmt->execute([
+        'id'=>$id,
+        'ht'=>$now
+    ]);
     
     $count = $stmt->rowCount();
 

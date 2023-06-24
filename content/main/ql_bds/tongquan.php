@@ -37,7 +37,7 @@
             <?php
                 $i=1;
                 while($row = $stmt->fetch()){
-                    $sql = $pdo->prepare("SELECT * FROM tin_dang WHERE ma_bds = :ma AND ngay_het_han < :ht");
+                    $sql = $pdo->prepare("SELECT * FROM tin_dang WHERE ma_bds = :ma AND ngay_het_han > :ht");
                     $sql->execute([
                         'ma'=>$row['ma_bds'],
                         'ht'=>$now
