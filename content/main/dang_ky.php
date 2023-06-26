@@ -120,26 +120,45 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
 <script>
+    $.validator.addMethod("matKhauManh", function(value, element) {
+        // Kiểm tra mật khẩu chứa ít nhất một ký tự hoa, một ký tự thường và một ký tự đặc biệt
+        var hasUppercase = /[A-Z]/.test(value);
+        var hasLowercase = /[a-z]/.test(value);
+        var hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value);
+
+        return hasUppercase && hasLowercase && hasSpecialChar;
+    }, "Mật khẩu phải chứa ít nhất một ký tự hoa, một ký tự thường và một ký tự đặc biệt");
+
+    $.validator.addMethod("ngayThangHopLe", function(value, element) {
+        // Chuyển đổi giá trị ngày tháng thành đối tượng Date
+        var inputDate = new Date(value);
+        var currentDate = new Date(2005, 1, 1);
+
+        // Kiểm tra xem ngày tháng có nằm trong khoảng từ 1/1/1900 đến hiện tại không
+        var minDate = new Date(1930, 0, 1); // Ngày 1/1/1900
+        return inputDate >= minDate && inputDate <= currentDate;
+    }, "Ngày tháng phải nằm trong khoảng từ 1/1/1900 đến hiện tại");
     $(document).ready(function(){
         $("#dangky").validate({
+            
             rules:{
                 'ten_tk': {required: true},
                 'email': {required: true, email: true},
-                'matkhau': {required: true},
-                'sdt': {required: true, number: true},
-                'cccd': {required: true, number: true},
-                'birthday': {required: true},
-                'diachi': {required: true},
+                'matkhau': {required:true ,matKhauManh: true},
+                'sdt': {required: true, number: true, minlength: 10, maxlength: 10},
+                'cccd': {required: true, number: true, minlength: 9, maxlength: 13},
+                'birthday': {required: true, ngayThangHopLe: true},
+                'diachi': {required: true, minlength: 10},
                            
             },
             messages:{
                 'ten_tk': {required: "không được bỏ trống thông tin"},
-                'email': {required: "không được bỏ trống thông tin", email: "sai định dạng email"},
-                'matkhau': {required: "không được bỏ trống thông tin"},
-                'sdt': {required: "không được bỏ trống thông tin", number: "Chỉ được nhập số"},
-                'cccd': {required: "không được bỏ trống thông tin", number: "Chỉ được nhập số"},
-                'birthday': {required: "không được bỏ trống thông tin"},
-                'diachi': {required: "không được bỏ trống thông tin"},
+                'email': {required: "không được bỏ trống thông tin", email: "Sai định dạng email"},
+                'matkhau': {required: "không được bỏ trống thông tin", matKhauManh: "Mật khẩu phải chứa ít nhất một ký tự hoa, một ký tự thường và một ký tự đặc biệt"},
+                'sdt': {required: "không được bỏ trống thông tin", number: "Chỉ được nhập số", minlength:"Số điện thoại phải có 10 chữ số", maxlength:"Số điện thoại phải có 10 chữ số"},
+                'cccd': {required: "không được bỏ trống thông tin", number: "Chỉ được nhập số", minlength: "Tối thiểu 9 chữ số", maxlength: "Tối đa 13 chữ số"},
+                'birthday': {required: "không được bỏ trống thông tin",ngayThangHopLe:"Ngày tháng phải nằm trong khoảng từ 1/1/1900 đến 1/1/2005"},
+                'diachi': {required: "không được bỏ trống thông tin", minlength: "Địa chỉ của bạn quá ngắn"},
                 
             }
         })

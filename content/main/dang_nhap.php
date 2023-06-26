@@ -25,7 +25,7 @@
 <div id="wrapper">
     <div class="container">
         <div class="row justify-content-around">
-            <form class="col-md-6 bg-light p-3 my-3" method="post">
+            <form class="col-md-6 bg-light p-3 my-3" method="post" id="dangnhap">
                 <h1 class="text-center text-uppercase h3 py-3">Sign up</h1>                    
                     <div class="mb-3">
                       <label for="inputEmail4"  class="form-label">Email</label>
@@ -44,3 +44,19 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#dangnhap").validate({
+      rules:{
+        'email':{required: true, email: true},
+        'pass': {required: true}
+      },
+      messages:{
+        'email':{required:"Không được bỏ trống", email:"Sai định dạng email"},
+        'pass':{required:"Không được bỏ trống"}
+      }
+    })
+  })
+</script>
