@@ -191,7 +191,7 @@
     b.id_loai = d.id_loai AND
     trangthai = 1
     AND ngay_het_han >= :ht 
-    ORDER BY loai_tin_dang DESC LIMIT $begin, $inpage"
+    ORDER BY loai_tin_dang DESC, ngay_het_han DESC LIMIT $begin, $inpage"
     
   );
   $stmt->execute(['ht'=>$now]);
