@@ -1,4 +1,7 @@
 <?php
+require("carbon/autoload.php");
+use Carbon\Carbon;
+$now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
 if(isset($_POST['timkiem'])){
      $tukhoa = $_POST['tukhoa'];
      $loai = $_POST['loai'];
@@ -12,9 +15,10 @@ if(isset($_POST['timkiem'])){
     b.id_taikhoan = c.id_taikhoan and
     b.id_loai = d.id_loai AND
     trangthai = 1 ".$tinh."".$loai."".$gia." and
+    ngay_het_han > '".$now."' AND
     tieu_de LIKE :tieude 
     ORDER BY loai_tin_dang DESC"
-  );  
+  );
   $stmt->execute(['tieude'=> '%'.$tukhoa.'%']);
 ?>
 <div class="container">
