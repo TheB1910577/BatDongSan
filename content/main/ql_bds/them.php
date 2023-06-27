@@ -45,7 +45,9 @@ if(isset($_SESSION['dangnhap'])){
                     <h5 class="modal-title" id="exampleModalLabel">HƯỚNG DẪN LẤY LINK MAPS</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    
                     <div class="modal-body">
+                    <a href="http://maps.google.com" target="_blank">Google Maps</a><br>
                         VIDEO HƯỚNG DẪN
                         <iframe width="450" height="315" src="https://www.youtube.com/embed/sI6aDjzEL-8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
@@ -125,7 +127,7 @@ if(isset($_SESSION['dangnhap'])){
 
             <div class="form-group mb-3 row">  
                 <input class="col-lg-1 col-md-1 col-sm-12 col-12 offset-lg-2" type="checkbox" id="agree" name="agree" value="agree">
-                <label for="agree" class="col-lg-8 col-md-11 col-sm-9 col-10 ">Bằng cách tích vào dấu này là bạn đã đọc và chắt chắn tuân thủ Điều khoảng và điều kiện của chúng tôi.</label>
+                <div class="col-lg-8 col-md-11 col-sm-9 col-10 "><label for="agree" >Bạn đã đọc và chắt chắn tuân thủ Điều khoản và điều kiện của chúng tôi.</label></div>
             </div>
 
             <input type="submit" class="btn btn-primary offset-lg-5 offset-md-4 offset-sm-3 mb-3" value="ĐĂNG BÀI" name="them"></input>

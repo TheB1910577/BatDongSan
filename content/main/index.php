@@ -173,7 +173,7 @@
 
 <?php
   //echo $_SESSION['dangnhap'];
-  $inpage = 12;
+  $inpage = 4;
   if(isset($_GET['trang'])){
 		$page = $_GET['trang'];
 	}else{
@@ -239,24 +239,24 @@
           <div class="card-body">
             <div class="row">
             
-            <h4 class="card-title gioihanvanban"><?php echo $rows['tieu_de'] ?></h4>
-              <div class="col-md-8">
+            <h5 class="card-title gioihanvanban"><?php echo $rows['tieu_de'] ?></h5>
+              <div class="col-md-12">
               <h6 class="green"><?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h6>
               </div>
-              <div class="col-md-4">
-              <h6 class="orange"><?php echo ($rows['dien_tich']).' m2' ?></h6>
+              <div class="col-md-12">
+              <h6 class="orange gioihanvanban1"><?php echo ($rows['dien_tich']).' m2' ?></h6>
               </div>
             </div>
             
             
             
-            <h5 class="gioihanvanban"><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h5>
+            <h6 class="gioihanvanban"><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h6>
             <div class="row">
               <div class="col-md-3">
               <img class="avatar" src="<?php if($rows['avata']!=0) echo 'uploads/'.$rows['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
               </div>
               <div class="col-md-9 pt-2">
-              <h5><?php echo $rows['ten_taikhoan'] ?></h5>
+              <h6 class="gioihanvanban1"><?php echo $rows['ten_taikhoan'] ?></h6>
               </div>
             </div>
           

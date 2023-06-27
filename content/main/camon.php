@@ -44,24 +44,32 @@
             ]);
            
 ?>
+
     <div class="container">
-    <p>Cảm ơn bạn đã sử dụng dịch vụ đăng tin của chúng tôi</p><br>
-    <p>Bạn đã thanh toán qua VNPAY thì bạn cứ yên tâm, chúng tôi sẽ xét duyệt nhanh chóng</p>
-    <p>Trở về trang chủ <a href="index.php">tại đây</a></p>
+        <div class="camon">
+            <p>Cảm ơn bạn đã sử dụng dịch vụ đăng tin của chúng tôi!</p>
+            <p>Bạn đã thanh toán qua VNPAY thì bạn cứ yên tâm, chúng tôi sẽ xét duyệt nhanh chóng</p>
+            <p>Trở về trang chủ <a href="index.php">tại đây</a></p>
+            
+        </div>
     </div>
+    
 
 <?php
     }
 }if(isset($_GET['id'])){
 ?>
 <div class="container">
-    <p>Cảm ơn bạn đã sử dụng dịch vụ đăng tin của chúng tôi</p><br>
-    <p>Bạn thanh toán chuyển khoản vui lòng chuyển khoảng theo thông tin sau:</p><br>
-    <p>Ngân hàng sacombank</p><br>
-    <p>Số tài khoản: 070108020601</p><br>
-    <p>Tên chủ tài khoản: LU HUNG CUONG</p><br>
-    <p>Nội dung chuyển khoản: #<?php echo $_GET['id']?></p><br>
-    <p>Sau khi nhận được chuyển khoản, chúng tôi sẽ duyệt ngay lập tức, trường hợp chậm trể bạn có thể nhắn qua fanfage FB</p>
+    <div class="camon">
+        <h1 class="camon1">Cảm ơn bạn đã sử dụng dịch vụ đăng tin của chúng tôi!</h1>
+        <p>Bạn thanh toán chuyển khoản vui lòng chuyển khoản theo thông tin sau:</p>
+        <p>Ngân hàng sacombank</p>
+        <p>Số tài khoản: 070108020601</p>
+        <p>Tên chủ tài khoản: LU HUNG CUONG</p>
+        <p>Nội dung chuyển khoản: #<?php echo $_GET['id']?></p>
+        <p>Sau khi nhận được chuyển khoản, chúng tôi sẽ duyệt ngay lập tức, trường hợp chậm trể bạn có thể nhắn qua fanfage FB</p>
+    </div>
+   
 </div><?php
 }
 ?>

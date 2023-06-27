@@ -44,7 +44,7 @@
         <div class="col">
             <div class="card h-100">
                 <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $row['ma_bds']; ?>">
-                <img src="uploads/bds/<?php echo $pic['link_anh'] ?>" class="card-img-top" alt="...">
+                <img src="uploads/bds/<?php echo $pic['link_anh'] ?>" class="card-img-top cover object" alt="...">
                 <div class="top-left nentrong text-white"><?php
          echo  ($loai['ten_loai'])
               ?></div>

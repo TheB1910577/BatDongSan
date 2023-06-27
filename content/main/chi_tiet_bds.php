@@ -282,10 +282,10 @@
             <div class="card-body">
               <div class="row">
               <h4 class="card-title gioihanvanban1"><?php echo $rows['tieu_de'] ?></h4>
-                <div class="col-md-8">
+                <div class="col-md-12">
                 <h6 class="green gioihanvanban1"><?php echo number_format($rows['gia_bds'],0,',','.').' VND' ?></h6>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-12">
                 <h6 class="orange gioihanvanban1"><?php echo ($rows['dien_tich']).' m2' ?></h6>
                 </div>
               </div>

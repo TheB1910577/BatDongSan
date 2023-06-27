@@ -126,7 +126,7 @@
             <label class="col-lg-2 col-md-3 col-sm-12 col-12 offset-lg-2 mb-3" for="">PHƯƠNG THỨC THANH TOÁN: </label>
             <div class="col-lg-5 col-md-8 col-sm-12 col-12">
                 <select name="thanhtoan" id="" class="form-select">
-                    <option value="chuyenkhoan" selected>CHUYỂN KHOẢNG NGÂN HÀNG</option>
+                    <option value="chuyenkhoan" selected>CHUYỂN KHOẢN NGÂN HÀNG</option>
                     <option value="vnpay">VÍ VNPAY</option>
                     <option value="momo">MOMO</option>
                 </select>
@@ -134,10 +134,10 @@
         </div>
 
         <div class="form-group mb-3 row offset-lg-4">
-            <p>Thông tin chuyển khoảng:</p>
+            <p>Thông tin chuyển khoản:</p>
             <p>Ngân hàng Sacombank</p>
-            <p>Tên chủ tài khoảng: LƯ HÙNG CƯỜNG</p>
-            <p>Số tài khoảng: 070108020601</p>
+            <p>Tên chủ tài khoản: LƯ HÙNG CƯỜNG</p>
+            <p>Số tài khoản: 070108020601</p>
         </div>
 
         <button type="submit" class="btn btn-primary offset-lg-2" name="redirect">ĐĂNG BÀI</button>
