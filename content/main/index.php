@@ -268,6 +268,34 @@
       }
     ?>
   </div>
+  <?php
+        // $sql_trang = mysqli_query($mysqli,"SELECT * FROM tbl_sanpham");
+        $sql_trang = $pdo->prepare(
+            "SELECT * FROM tin_dang"
+        );
+        $sql_trang->execute();
+        $row = $sql_trang->fetch();
+        $dem_dong = 8;
+        $trang = ceil($dem_dong/$inpage);
+    ?>
+    <!-- phan trang -->
+    <nav aria-label="..." class="mb-3 mt-3">
+    <ul class="pagination pagination-sm">
+        <?php
+            for($i = 1; $i<=$trang; $i++){
+
+            
+        ?>
+        <li class="page-item <?php if($i==$page) echo "disabled" ?>">
+        <a class="page-link" href="index.php?trang=<?php echo $i ?>" tabindex="-1"><?php echo $i ?></a>
+        </li>
+
+        <?php
+            }
+        ?>
+        
+    </ul>
+    </nav>
 </div>
 <br>
 <!-- ------------------------------------- -->
