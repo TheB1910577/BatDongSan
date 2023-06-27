@@ -139,13 +139,24 @@
 
 <?php
   //echo $_SESSION['dangnhap'];
+  $inpage = 12;
+  if(isset($_GET['trang'])){
+		$page = $_GET['trang'];
+	}else{
+		$page = 1;
+	}
+	if($page == '' || $page == 1){
+		$begin = 0;
+	}else{
+		$begin = ($page*$inpage)-$inpage;
+	}
   $stmt = $pdo->prepare(
     "SELECT * FROM tin_dang as a, bat_dong_san as b, taikhoan as c WHERE
     a.ma_bds = b.ma_bds AND 
     b.id_taikhoan = c.id_taikhoan AND 
     trangthai = 1
     AND ngay_het_han >= :ht 
-    ORDER BY loai_tin_dang DESC"
+    ORDER BY loai_tin_dang DESC LIMIT $begin, $inpage"
     
   );
   $stmt->execute(['ht'=>$now]);
@@ -181,10 +192,10 @@
             
             <h5 class="gioihanvanban"><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h5>
             <div class="row">
-              <div class="col-md-2">
+              <div class="col-lg-3 col-md-2">
               <img class="avatar" src="<?php if($rows['avata']!=0) echo 'uploads/'.$rows['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
               </div>
-              <div class="col-md-10 pt-2">
+              <div class="col-lg-9 col-md-10 pt-2">
               <h5><?php echo $rows['ten_taikhoan'] ?></h5>
               </div>
             </div>
@@ -197,5 +208,32 @@
       }
     ?>
   </div>
+  <?php
+        $sql_trang = $pdo->prepare(
+            "SELECT * FROM tin_dang"
+        );
+        $sql_trang->execute();
+        $row = $sql_trang->fetch();
+        $dem_dong = 8;
+        $trang = ceil($dem_dong/$inpage);
+    ?>
+    <!-- phan trang -->
+    <nav aria-label="..." class="mb-3">
+    <ul class="pagination pagination-sm">
+        <?php
+            for($i = 1; $i<=$trang; $i++){
+
+            
+        ?>
+        <li class="page-item <?php if($i==$page) echo "disabled" ?>">
+        <a class="page-link" href="index.php?trang=<?php echo $i ?>" tabindex="-1"><?php echo $i ?></a>
+        </li>
+
+        <?php
+            }
+        ?>
+        
+    </ul>
+    </nav>
 </div>
     
