@@ -1,3 +1,37 @@
+<div class="container pt-2">
+<div class="row">
+<div class="col-md-6 d-block">
+      <img class="img-fluid" src="asset\image\BUILD.PNG" alt="">
+  </div>
+  <div class="col-md-6">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="asset\image\final bds 2.PNG" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="asset\image\final bds 1.PNG" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+  </div>
+
+ 
+</div>
+</div>
+
+
+
+
+
 <?php
   require("carbon/autoload.php");
   use Carbon\Carbon;
@@ -140,9 +174,10 @@
 <?php
   //echo $_SESSION['dangnhap'];
   $stmt = $pdo->prepare(
-    "SELECT * FROM tin_dang as a, bat_dong_san as b, taikhoan as c WHERE
+    "SELECT * FROM tin_dang as a, bat_dong_san as b, taikhoan as c, loai_bds as d  WHERE
     a.ma_bds = b.ma_bds AND 
     b.id_taikhoan = c.id_taikhoan AND 
+    b.id_loai = d.id_loai AND
     trangthai = 1
     AND ngay_het_han >= :ht 
     ORDER BY loai_tin_dang DESC"
@@ -164,7 +199,32 @@
     <div class="col">
     <div class="card h-100">
         <a class="card1" href="index.php?quanly=chi_tiet_bds&ma_bds=<?php echo $rows['ma_bds']; ?>">
-          <img src="uploads/bds/<?php echo $row['link_anh'] ?>" class="card-img-top cover object" alt="...">
+         
+        <img src="uploads/bds/<?php echo $row['link_anh'] ?>" class="card-img-top cover object" alt="...">
+        
+        <div class="top-left nentrong text-white"><?php
+         echo  ($rows['ten_loai'])
+              ?></div>
+          
+          <div class="top-left-bottom"><?php
+              if ($rows['loai_tin_dang'] == 1) {
+                echo'<div class="silver text-white">
+                Silver
+          </div>' ;
+              }
+              else if ($rows['loai_tin_dang'] == 2){
+                echo' <div class="gold text-white">
+                Gold
+          </div>' ;
+              } else {
+                echo'<div class="platinum text-white">
+                Platinum
+          </div>';
+              }
+              ?></div>
+
+
+              
           <div class="card-body">
             <div class="row">
             
@@ -181,10 +241,10 @@
             
             <h5 class="gioihanvanban"><i class='fa-solid fa-location-dot'></i> <?php echo $rows['diachi'] ?></h5>
             <div class="row">
-              <div class="col-md-2">
+              <div class="col-md-3">
               <img class="avatar" src="<?php if($rows['avata']!=0) echo 'uploads/'.$rows['avata']; else echo 'https://res.cloudinary.com/dm1dyamzb/image/upload/v1686010584/default_px3hi9.png' ?>" alt="">
               </div>
-              <div class="col-md-10 pt-2">
+              <div class="col-md-9 pt-2">
               <h5><?php echo $rows['ten_taikhoan'] ?></h5>
               </div>
             </div>
@@ -198,4 +258,26 @@
     ?>
   </div>
 </div>
+
+<br>
+<!-- ------------------------------------- -->
+<H3 style="text-align: center;">VÌ SAO BẠN NÊN CHỌN <span style="color: orange;">BATDONGSAN</span>.VN</H3>
+<div class="row fonto">
+    <div class="col-sm-12 col-md-12 col-lg-4 text-center text-success ">
+      <span class="gg"><H1><i class='fa fa-bookmark-o'></i></H1></span>
+      <h2>DANH SÁCH ĐA DẠNG</h2>
+      <H4>Với nhiều lựa chọn về căn hộ, nhà phố, đất đai và nhiều loại bất động sản khác</H4>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4 text-center text-success ">
+      <span class="gg"> <H1><i class="fa-solid fa-people-group"></i></H1> </span>
+      <h2 class="">ĐỐI TÁC TIN CẬY</h2>
+      <H4>Uy tín đã được khẳng định trong lĩnh vực bất động sản</H4>
+      
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4 text-center text-success ">
+      <span class="gg"> <H1><i class='fa fa-search'></i></H1> </span>
+      <h2 class="">TÌM KIẾM DỄ DÀNG</h2>
+      <H4>Giao diện tìm kiếm trực quan và dễ dàng giúp người dùng dễ dàng tìm kiếm thông tin và lựa chọn phù hợp</H4>
+    </div>
+  </div>
     
