@@ -33,7 +33,7 @@
 
 </head>
 <body>
-<div class="container-fluid">
+<div class="">
 
     <?php
       session_start();

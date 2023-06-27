@@ -1,3 +1,106 @@
+li a{
+    text-decoration: none;
+}
+.avatarto {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 0.5px;
+    background-color: rgb(65, 65, 65);
+  }
+
+  .nenxam{
+    background-color: #eef1f3;
+    border-radius: 10px;
+  }
+  .nenxamcard{
+    background-color: #eef1f3;
+    border-radius: 10px;
+
+  }
+  .nenxanh{
+    background: #ADD100;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #7B920A, #ADD100);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #7B920A, #ADD100); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+  .nencam{
+    background: #ff4b1f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ff9068, #ff4b1f);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ff9068, #ff4b1f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+  .nenblue{
+    background: #00d2ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #928DAB, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #928DAB, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+  .nenvang{
+    background-color: #e2cf00;
+  }
+  .property {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .nenxamer{
+    background-color: #ffffff;
+  }
+  .chutrenhinh{
+    position: relative;
+    text-align: center;
+    color: rgb(219, 8, 8);
+  
+}
+.top-left {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.top-left-bottom {
+    position: absolute;
+    top: 45px;
+    left: 5px;
+  }
+
+  .nentrong{
+    background: #667db6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #667db6a9, #0082c8a5, #0082c8a6, #667db6a4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .platinum{
+    background: #000046;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #1cb5e0af, #000046ac); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .gold{
+    background: #FF8008;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFC837, #FF8008);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ffc637af, #ff7f08ab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .silver{
+    background: #8e9eab;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #eef2f3b0, #8e9eabab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+padding: 5px;
+    border-radius: 10px;
+  }
 .search{
     height: 50px ;
     border-radius: 10px;
@@ -7,6 +110,7 @@
 .white{
     color: #ffffff;
 }
+
 .orange{
     color: #ff5900;
 }
@@ -93,8 +197,30 @@
     text-decoration: none;
     
 }
-.card a:hover{
-    color: rgb(148, 152, 148);
+.card:hover{
+    border: 1px solid #d0cece44;
+    box-shadow: 0 7px 50px 10px #000000aa;
+    transform: scale(1.015);
+    filter: brightness(0,1);
+    ::before{
+        filter: brightness(0,1);
+        top: -200%;
+        left: -200%;
+    }
+}
+.object {
+    width: 250px;
+    height: 250px;
+}
+.cover{
+    object-fit: cover;
+}
+.object1 {
+    width: 450px;
+    height: 450px;
+}
+.cover1{
+    object-fit: cover;
 }
 
 .footer{
@@ -233,36 +359,8 @@
     padding-right: auto;
     padding-bottom: 20px
 } */
-.card1{
-    color: black;
-    text-decoration: none;
-    
-}
-.card a:hover{
-    border: 1px solid #d0cece44;
-    box-shadow: 0 7px 50px 10px #000000aa;
-    transform: scale(1.015);
-    filter: brightness(0,1);
-    ::before{
-        filter: brightness(0,1);
-        top: -200%;
-        left: -200%;
-    }
-}
-.object {
-    width: 250px;
-    height: 250px;
-}
-.cover{
-    object-fit: cover;
-}
-.object1 {
-    width: 450px;
-    height: 450px;
-}
-.cover1{
-    object-fit: cover;
-}
+
+
 
 .footer{
     padding-top: 50px;
@@ -347,15 +445,18 @@
 }
 
 
-.top-left {
-    left: 500px ;
-  }
-
-  .gioihanvanban{
+.gioihanvanban{
     overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 2; /* Số dòng tối đa */
+        -webkit-box-orient: vertical; 
+}
+.gioihanvanban1{
+    overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Số dòng tối đa */
         -webkit-box-orient: vertical; 
 }
 /* avata */
@@ -458,18 +559,7 @@
     border-radius: 10px;
 
   }
-  .nenxanh{
-    background-color: #50b90b;
-  }
-  .nencam{
-    background-color: #cb4b00;
-  }
-  .nenblue{
-    background-color: #0099ff;
-  }
-  .nenvang{
-    background-color: #e2cf00;
-  }
+  
   .property {
     width: 500px;
     height: 300px;
